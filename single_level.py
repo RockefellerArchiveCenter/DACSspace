@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import os, requests, json, ConfigParser, csv
+import os, requests, json, configparser, csv
 from codecs import encode
 
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 config.read("local_settings.cfg")
 
 dictionary = {"baseURL": config.get("ArchivesSpace", "baseURL"), "repository":config.get("ArchivesSpace", "repository"), "user": config.get("ArchivesSpace", "user"), "password": config.get("ArchivesSpace", "password")}
@@ -15,7 +15,7 @@ auth = requests.post("{baseURL}/users/{user}/login?password={password}&expiring=
 headers = {"X-ArchivesSpace-Session":auth["session"]}
 
 spreadsheet = os.path.join(config.get("Destinations", "directory"), config.get("Destinations", "filename"))
-	
+
 def get_note_contents(resource, array, note_type):
 	notes = resource["notes"]
 	content_list = []
@@ -28,7 +28,7 @@ def get_note_contents(resource, array, note_type):
 					content_list.append(note["subnotes"][0]["content"].encode('utf-8'))
 		except:
 			pass
-	return " | ".join(content_list)
+	return b" | " .join(content_list)
 
 def get_values(resource, array, value):
 	value_types = []
@@ -63,16 +63,16 @@ def makeRow(resource):
 	required_notes = scope, access
 
 	for item in required_values:
-		if item != "false": 
+		if item != "false":
 			row.append(item)
 		else:
-			row.append("false")	
+			row.append("false")
 
 	if repository:
 		response = requests.get(repositoryBaseURL, headers=headers).json()
 		row.append(response["name"])
 	else:
-		row.append("false")			
+		row.append("false")
 
 	if "creator" in agent:
 		creator_list = []
@@ -83,71 +83,71 @@ def makeRow(resource):
 		row.append(", ".join(creator_list).encode('utf-8'))
 	else:
 		row.append("false")
-							
+
 	for item in required_notes:
 		if item:
 			row.append(item)
 		else:
 			row.append("false")
-	
-	print row	
+
+	print(row)
 
 def main():
-	#User input to refine functionality of script 
-	print ""
-	print "Welcome to DACSspace!\n"
-	print "I'll ask you a series of questions to refine how the script works.\n"
-	print "If you want to use the default value for a question press the ENTER key.\n"
-	unpublished_response = raw_input("Do you want DACSspace to include unpublished resources? y/n (default is n): ")
-	uniqueid_response = raw_input("Do you want to further limit the script by a specific resource id? If so, enter a string that must be present in the resource id (enter to skip): ")
-	
+	#User input to refine functionality of script
+	print("")
+	print("Welcome to DACSspace!\n")
+	print("I'll ask you a series of questions to refine how the script works.\n")
+	print("If you want to use the default value for a question press the ENTER key.\n")
+	unpublished_response = input("Do you want DACSspace to include unpublished resources? y/n (default is n): ")
+	uniqueid_response = input("Do you want to further limit the script by a specific resource id? If so, enter a string that must be present in the resource id (enter to skip): ")
+
 	#Getting list of resources
 	resourceIds = requests.get(repositoryBaseURL + "/resources?all_ids=true", headers=headers)
-	
+
 	#Creating csv
-	writer = csv.writer(open(spreadsheet, "wb"))
+	writer = csv.writer(open(spreadsheet, "w"))
 	column_headings = ["title", "publish", "resource", "extent", "date", "language", "repository", "creator", "scope", "restrictions"]
 	writer.writerow(column_headings)
 
 	#Checking ALL resources
 	if unpublished_response == ("y"):
 		if uniqueid_response:
-			print "Evaluating all resources containing", uniqueid_response,"in their resource ID"
+			print("Evaluating all resources containing", uniqueid_response,"in their resource ID")
 			for resourceId in resourceIds.json():
-				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()	
+				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()
 				if uniqueid_response in resource["id_0"]:
 					makeRow(resource)
 					writer.writerow(row)
 				else:
 					pass
 		else:
-			print "Evaluating all resources"
+			print("Evaluating all resources")
 			for resourceId in resourceIds.json():
-				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()	
+				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()
 				makeRow(resource)
 				writer.writerow(row)
-				
+
 	#Checking ONLY published resources
 	elif not unpublished_response or unpublished_response == ("n"):
 		if uniqueid_response:
-			print "Evaluating only published resources containing", uniqueid_response,"in their resource ID"
+			print("Evaluating only published resources containing", uniqueid_response,"in their resource ID")
 			for resourceId in resourceIds.json():
-				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()	
+				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()
 				if resource["publish"] and uniqueid_response in resource["id_0"]:
 					makeRow(resource)
 					writer.writerow(row)
 				else:
 					pass
 		else:
-			print "Evaluating published resources"
+			print("Evaluating published resources")
 			for resourceId in resourceIds.json():
-				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()	
+				resource = (requests.get(repositoryBaseURL + "/resources/" + str(resourceId), headers=headers)).json()
 				if resource["publish"]:
 					makeRow(resource)
 					writer.writerow(row)
 				else:
 					pass
 	else:
-		print "Invalid response, please try again"
+		print("Invalid response, please try again")
 
 main()
