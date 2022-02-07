@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os, requests, json, configparser, csv
-from codecs import encode
 
 config = configparser.ConfigParser()
 config.read("local_settings.cfg")
@@ -23,12 +22,12 @@ def get_note_contents(resource, array, note_type):
 		try:
 			if note["type"] == note_type:
 				if note["jsonmodel_type"] == "note_singlepart":
-					content_list.append(note["content"].encode('utf-8'))
+					content_list.append(note["content"])
 				else:
-					content_list.append(note["subnotes"][0]["content"].encode('utf-8'))
+					content_list.append(note["subnotes"][0]["content"])
 		except:
 			pass
-	return b" | " .join(content_list)
+	return " | " .join(content_list)
 
 def get_values(resource, array, value):
 	value_types = []
@@ -50,7 +49,7 @@ def makeRow(resource):
 	global row
 	row = []
 	publish = get_single_value(resource, "publish")
-	title = get_single_value(resource, "title").encode('utf-8')
+	title = get_single_value(resource, "title")
 	resource_id = get_single_value(resource, "id_0")
 	extent = get_values(resource, "extents", "number")
 	date = get_values(resource, "dates", "date_type")
@@ -80,7 +79,7 @@ def makeRow(resource):
 			response = requests.get(resourceURL + item["ref"], headers=headers).json()
 			for item in response["names"]:
 				creator_list.append(item["sort_name"])
-		row.append(", ".join(creator_list).encode('utf-8'))
+		row.append(", ".join(creator_list))
 	else:
 		row.append("false")
 
