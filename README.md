@@ -6,7 +6,7 @@ DACSspace utilizes the ArchivesSpace API to check resources for DACS compliance 
 
 ## Requirements
 
-*   Python 3
+*   Python 3.7
 *   ConfigParser
 *   Requests module
 
