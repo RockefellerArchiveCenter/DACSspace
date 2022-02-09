@@ -1,12 +1,12 @@
 # DACSspace
 
-A simple Python script to evaluate your ArchivesSpace instance for DACS [single-level minimum](http://www2.archivists.org/standards/DACS/part_I/chapter_1) required elements. 
+A simple Python script to evaluate your ArchivesSpace instance for DACS [single-level minimum](http://www2.archivists.org/standards/DACS/part_I/chapter_1) required elements.
 
 DACSspace utilizes the ArchivesSpace API to check resources for DACS compliance and produces a csv containing a list of evaluated resources. If a DACS field is present its content will be written to the csv, if a field is missing the csv will read "FALSE" for that item.
 
 ## Requirements
 
-*   Python (written for and tested on 2.7).
+*   Python 3.7
 *   ConfigParser
 *   Requests module
 
