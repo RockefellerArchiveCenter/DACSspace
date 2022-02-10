@@ -9,6 +9,12 @@ DACSspace utilizes the ArchivesSpace API to check resources for DACS compliance 
 *   Python (written for and tested on 2.7).
 *   ConfigParser
 *   Requests module
+*   [pre-commit](https://pre-commit.com/) (for running linters before committing)
+    *   After locally installing pre-commit, install the git-hook scripts in the DACSSpace directory:
+
+    ```
+    pre-commit install
+    ```  
 
 ## Installation
 
