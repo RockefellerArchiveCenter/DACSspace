@@ -10,8 +10,8 @@ repos:
   rev: 3.7.9
   hooks:
   - id: flake8
-- repo: git://github.com/doublify/pre-commit-isort
-  rev: v4.3.0
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
   hooks:
   - id: isort
 - repo: https://github.com/jazzband/pip-tools
