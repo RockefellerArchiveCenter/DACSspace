@@ -6,7 +6,7 @@ from .validator import Validator
 class DACSspace:
     """Base DACSspace class. Fetches data from AS, validates and reports results."""
 
-    def run(self):
+    def run(self, published_only, invalid_only):
         client = ArchivesSpaceClient()
         validator = Validator()
         reporter = CSVReporter()
