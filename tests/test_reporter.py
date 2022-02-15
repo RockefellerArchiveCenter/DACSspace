@@ -1,6 +1,7 @@
-from unittest.mock import patch
+# from unittest.mock import patch
+#
+# from dacsspace.reporter import CSVReporter
 
-from dacsspace.reporter import CSVReporter
 
 def test_reporter():
     pass
