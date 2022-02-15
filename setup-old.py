@@ -8,12 +8,6 @@ current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, "local_settings.cfg")
 
 
-def check_response(response, yes):
-    if response != yes:
-        print("Exiting!")
-        sys.exit()
-
-
 def start_section(section_name):
     cfg_file.write("\n[{}]\n".format(section_name))
 
@@ -24,6 +18,7 @@ def write_value(name, default, value=None):
     else:
         line = ("{}: {}\n".format(name, default))
     cfg_file.write(line)
+
 
 
 def main():
