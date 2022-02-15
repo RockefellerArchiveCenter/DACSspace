@@ -3,4 +3,4 @@ __version__ = '0.1.0'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2022 Rockefeller Archive Center'
 
-from .DACSspace import DACSspace  # noqa: F401
+from .dacsspace import DACSspace  # noqa: F401

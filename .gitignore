@@ -1,3 +1,5 @@
 local_settings.cfg
 log.txt
 *.csv
+*__pycache__
+.coverage
