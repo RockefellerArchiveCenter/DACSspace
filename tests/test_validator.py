@@ -14,7 +14,7 @@ class TestValidator(unittest.TestCase):
         json_file = "/Users/aberish/Documents/GitHub/DACSspace/fixtures/resource.json"
         with open(json_file, 'r') as f:
             json_data = json.load(f)
-        return(json_data)
+        return json_data
 
 
 # HELP: I don't know what this does, but I saw it used in other tests
