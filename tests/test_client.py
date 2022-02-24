@@ -1,7 +1,11 @@
-# from unittest.mock import patch
-#
-# from dacsspace.client import ArchivesSpaceClient
+import unittest
+import argparse
+from configparser import ConfigParser
+from asnake.aspace import ASpace
+from dacsspace.client import ArchivesSpaceClient
 
 
-def test_client():
-    pass
+class ArchivesSpaceClient(unittest.TestCase):
+    def test_client(self):
+        result = ArchivesSpaceClient().get_resources(args.published_only)
+        self.assertTrue(isinstance(result, list))

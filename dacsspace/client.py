@@ -13,7 +13,7 @@ class ArchivesSpaceClient:
         self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseURL'),
                              username=config.get('ArchivesSpace', 'user'),
                              password=config.get('ArchivesSpace', 'password'))
-        pass
+        self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))
 
     def get_resources(self, published_only):
         """Returns data about resource records from AS.
@@ -22,14 +22,11 @@ class ArchivesSpaceClient:
         Returns:
           resources (list): Full JSON of AS resource records
         """
-        self.repo = self.aspace.repositories(2)
-        self.resources = self.repo.resources()
-        for obj in self.aspace.resources:
-            obj_json = obj.json()
-            published_only == obj_json['publish']
-            pass
+        for resource in self.repo.search.with_params(q='publish:true AND primary_type:resource'):
+            resource_json = resource.json()
+        return resource_json
+        #build in tests
 
-#should arguments be within get_resources?
 parser = argparse.ArgumentParser()
 parser.add_argument('published_only', help='Fetch only published records from AS', action='store_true')
 args = parser.parse_args()
