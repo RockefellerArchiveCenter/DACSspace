@@ -15,8 +15,3 @@ class TestValidator(unittest.TestCase):
             result = Validator().validate_data(json_data)
         self.assertTrue(isinstance(result, dict))
         self.assertEqual(result["valid"], "True")
-
-
-# HELP: I don't know what this does, but I saw it used in other tests
-# if __name__ == "__main__":
-#    unittest.main()
