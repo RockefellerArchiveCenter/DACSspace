@@ -4,6 +4,8 @@ import argparse
 from configparser import ConfigParser
 from asnake.aspace import ASpace
 
+#published_only = False
+
 class ArchivesSpaceClient:
     """Handles communication with ArchivesSpace."""
 
@@ -22,13 +24,19 @@ class ArchivesSpaceClient:
         Returns:
           resources (list): Full JSON of AS resource records
         """
-        for resource in self.repo.search.with_params(q='publish:true AND primary_type:resource'):
-            resource_json = resource.json()
-        return resource_json
+        if published_only is True:
+            for resource in self.repo.search.with_params(q='publish:true AND primary_type:resource'):
+                resource_json = resource.json()
+            return resource_json
+        else:
+            for resource in self.repo.search.with_params(q='primary_type:resource'):
+                resource_json = resource.json()
+            return resource_json
+
+                #return resource.publish
+                         #return resource_json
+        #return resource.publish
+
         #build in tests
 
-parser = argparse.ArgumentParser()
-parser.add_argument('published_only', help='Fetch only published records from AS', action='store_true')
-args = parser.parse_args()
-
-ArchivesSpaceClient().get_resources(args.published_only)
+#ArchivesSpaceClient().get_resources(published_only)
