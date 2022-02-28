@@ -17,6 +17,8 @@ class CSVReporter:
             invalid_only (boolean): Only report on invalid results.
         """
 
+        if self.filemode.startswith("r"):
+            raise TypeError("Filemode must allow write options.")
         with open(self.filename, self.filemode) as f:
             fieldnames = [
                 "title",
