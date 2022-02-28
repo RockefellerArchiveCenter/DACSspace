@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-
-import argparse
 from configparser import ConfigParser
+
 from asnake.aspace import ASpace
 
-#published_only = False
 
 class ArchivesSpaceClient:
     """Handles communication with ArchivesSpace."""
@@ -33,10 +31,4 @@ class ArchivesSpaceClient:
                 resource_json = resource.json()
             return resource_json
 
-                #return resource.publish
-                         #return resource_json
-        #return resource.publish
-
-        #build in tests
-
-#ArchivesSpaceClient().get_resources(published_only)
+# ArchivesSpaceClient().get_resources(published_only)
