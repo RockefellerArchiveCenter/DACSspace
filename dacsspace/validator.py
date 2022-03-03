@@ -9,8 +9,8 @@ class Validator:
 
     def get_schema(self):
         schema = {
-            "type": "object",
-            "title": "resource",
+            "type": "array",
+            "title": "DACSspace schema",
             "required": [
                 "title"
             ],
