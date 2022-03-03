@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from configparser import ConfigParser
 
 from asnake.aspace import ASpace
@@ -23,12 +22,11 @@ class ArchivesSpaceClient:
           resources (list): Full JSON of AS resource records
         """
         if published_only is True:
-            for resource in self.repo.search.with_params(q='publish:true AND primary_type:resource'):
-                resource_json = resource.json()
-            return resource_json
+            repo_params_search = self.repo.search.with_params(q='publish:true AND primary_type:resource')
         else:
-            for resource in self.repo.search.with_params(q='primary_type:resource'):
-                resource_json = resource.json()
-            return resource_json
+            repo_params_search = self.repo.search.with_params(q='primary_type:resource')
+        for resource in repo_params_search:
+            resource_json = resource.json()
+            yield resource_json
 
 # ArchivesSpaceClient().get_resources(published_only)
