@@ -21,8 +21,8 @@ class Validator:
         }
         return schema
 
-# Checks data from resource.json against schema
-    def validate_data(self, json_data):
+# Checks data against schema
+    def validate_data(self, data):
         """Validates data.
 
         Args:
@@ -35,10 +35,16 @@ class Validator:
         """
         schema = self.get_schema()
         try:
-            validate(json_data, schema)
+            validate(data, schema)
             return {"valid": True}
-        except ValidationError():
-            return {"valid": False}
+        except ValidationError as error:
+            print(error)
+            for error in data:
+                return {"valid": False, "explanation": "You are missing a field"}
+                print(ValidationError)
+        # except SchemaError as schema_error:
+            # print(schema_error)
+            # SchemaError can go into the init method
         else:
             print("Something else is wrong")
 
