@@ -1,4 +1,4 @@
-[{
+{
     "lock_version": 17,
     "publish": true,
     "restrictions": false,
@@ -156,4 +156,4 @@
     "tree": {
         "ref": "/repositories/2/resources/13192/tree"
     }
-}]
+}
