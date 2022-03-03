@@ -18,7 +18,7 @@ class CSVReporter:
         """
 
         if self.filemode.startswith("r"):
-            raise TypeError("Filemode must allow write options.")
+            raise ValueError("Filemode must allow write options.")
         with open(self.filename, self.filemode) as f:
             fieldnames = [
                 "title",
