@@ -14,7 +14,7 @@ class TestValidator(unittest.TestCase):
         with open(invalid_json, 'r') as f:
             invalid_json = json.load(f)
             result = Validator().validate_data(invalid_json)
-        self.assertFalse(isinstance(result, dict))
+        self.assertTrue(isinstance(result, dict))
         self.assertEqual(result["valid"], False)
         # with open(invalid_json, 'r') as i:
         #     invalid_json = json.load(i)
