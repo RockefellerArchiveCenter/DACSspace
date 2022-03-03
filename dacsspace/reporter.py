@@ -20,17 +20,8 @@ class CSVReporter:
         if self.filemode.startswith("r"):
             raise ValueError("Filemode must allow write options.")
         with open(self.filename, self.filemode) as f:
-            fieldnames = [
-                "title",
-                "publish",
-                "resource",
-                "extent",
-                "date",
-                "language",
-                "repository",
-                "creator",
-                "scope",
-                "restrictions"]
+            fieldnames = list(
+                results.keys())
             writer = csv.DictWriter(
                 f, fieldnames=fieldnames)
             writer.writeheader()
