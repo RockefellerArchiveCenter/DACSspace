@@ -1,8 +1,8 @@
 [ArchivesSpace]
-baseURL: #BaseURL of your ArchivesSpace instance
-repository: #Repository ID of your ArchivesSpace installation
-user: #ArchivesSpace username
-password: #ArchivesSpace password for the username used above
+baseURL: https://sandbox.archivesspace.org/api/
+repository: 101
+user: admin
+password: admin
 
 [Destinations]
 directory: #Directory where you would like to save the csv file
