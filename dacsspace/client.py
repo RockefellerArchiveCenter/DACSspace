@@ -7,12 +7,15 @@ class ArchivesSpaceClient:
     """Handles communication with ArchivesSpace."""
 
     def __init__(self):
-        config = ConfigParser()
-        config.read("local_settings.cfg")
-        self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseURL'),
-                             username=config.get('ArchivesSpace', 'user'),
-                             password=config.get('ArchivesSpace', 'password'))
-        self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))
+        try:
+            config = ConfigParser()
+            config.read("local_settings.cfg")
+            self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseURL'),
+                                 username=config.get('ArchivesSpace', 'user'),
+                                 password=config.get('ArchivesSpace', 'password'))
+            self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))
+        except ValueError:
+            print("Missing config file or ArchivesSpace heading in config file")
 
     def get_resources(self, published_only):
         """Returns data about resource records from AS.
@@ -28,5 +31,3 @@ class ArchivesSpaceClient:
         for resource in repo_params_search:
             resource_json = resource.json()
             yield resource_json
-
-# ArchivesSpaceClient().get_resources(published_only)
