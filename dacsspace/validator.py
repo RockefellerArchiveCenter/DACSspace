@@ -35,17 +35,14 @@ class Validator:
            of any validation errors. { "valid": False, "explanation": "You are missing the following fields..." }
         """
         schema = self.get_schema()
+        # print(data)
         try:
             validate(data, schema)
             return {"valid": True}
         except ValidationError as error:
-            print(error)
-            for error in data:
-                return {"valid": False, "explanation": "You are missing a field"}
-                print(ValidationError)
-        # except SchemaError as schema_error:
-            # print(schema_error)
-            # SchemaError can go into the init method
+            # print(error.message)
+            return {"valid": False, "explanation": error.message}
+            # continue
         else:
             print("Something else is wrong")
 
