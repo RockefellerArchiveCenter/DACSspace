@@ -11,7 +11,8 @@ class Validator:
             "type": "object",
             "title": "DACSspace schema",
             "required": [
-                "title"
+                "title",
+                "id_0"
             ],
             "properties": {
                 "title": {
