@@ -14,8 +14,8 @@ class ArchivesSpaceClient:
                                  username=config.get('ArchivesSpace', 'user'),
                                  password=config.get('ArchivesSpace', 'password'))
             self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))
-        except ValueError:
-            print("Missing config file or ArchivesSpace heading in config file")
+        except BaseException:
+            Exception
 
     def get_resources(self, published_only):
         """Returns data about resource records from AS.
