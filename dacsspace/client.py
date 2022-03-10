@@ -9,7 +9,7 @@ class ArchivesSpaceClient:
     def __init__(self):
         try:
             config = ConfigParser()
-            config.read("local_settings.cfg")
+            config.read("dacsspace/local_settings.cfg")
             self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseURL'),
                                  username=config.get('ArchivesSpace', 'user'),
                                  password=config.get('ArchivesSpace', 'password'))
