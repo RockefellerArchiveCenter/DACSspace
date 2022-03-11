@@ -21,7 +21,7 @@ class ArchivesSpaceClientTests(unittest.TestCase):
             - Configuration files without all the necessary values cause an exception to be raised.
             - Valid configuration file allows for successful instantiation of ArchivesSpaceClient class.
         """
-    #    ArchivesSpaceClient()
+        # ArchivesSpaceClient()
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
@@ -33,21 +33,23 @@ class ArchivesSpaceClientTests(unittest.TestCase):
             - Valid connection details should allow for successful instantiation of the ArchivesSpaceClient class.
         """
         # Incorrect authentication credentials
+        mock_post.return_value.status_code = 403
         with self.assertRaises(Exception, msg="Incorrect authentication credentials"):
-            mock_post.return_value.status_code = 403
+            ArchivesSpaceClient()
 
         # Incorrect base URL
+        mock_post.return_value.status_code = 404
         with self.assertRaises(Exception, msg="Incorrect base URL"):
-            mock_post.return_value.status_code = 404
+            ArchivesSpaceClient()
 
         # Incorrect repository
+        mock_post.return_value.status_code = 200
+        mock_post.return_value.text = "{\"session\": \"12355\"}"
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.text = "v3.0.2"
+        mock_get.return_value.json.return_value = {'error': 'Repository not found'}
         with self.assertRaises(Exception, msg="Incorrect repository"):
-            mock_post.return_value.status_code = 200
-            mock_post.return_value.text = "{\"session\": \"12355\"}"
-            mock_get.return_value.status_code = 200
-            mock_get.return_value.text = "v3.0.2"
-            mock_get.return_value.json.return_value = {'error': 'Repository not found'}
-        ArchivesSpaceClient()
+            ArchivesSpaceClient()
 
     @patch("asnake.client.web_client.ASnakeClient.get.return_value.json.return_value.search.with_params")
     @patch("asnake.client.web_client.ASnakeClient.get")

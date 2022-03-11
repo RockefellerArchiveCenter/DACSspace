@@ -7,15 +7,12 @@ class ArchivesSpaceClient:
     """Handles communication with ArchivesSpace."""
 
     def __init__(self):
-        try:
-            config = ConfigParser()
-            config.read("dacsspace/local_settings.cfg")
-            self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseURL'),
-                                 username=config.get('ArchivesSpace', 'user'),
-                                 password=config.get('ArchivesSpace', 'password'))
-            self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))
-        except BaseException:
-            Exception
+        config = ConfigParser()
+        config.read("dacsspace/local_settings.cfg")
+        self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseURL'),
+                             username=config.get('ArchivesSpace', 'user'),
+                             password=config.get('ArchivesSpace', 'password'))
+        self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))
 
     def get_resources(self, published_only):
         """Returns data about resource records from AS.
