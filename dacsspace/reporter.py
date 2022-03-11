@@ -20,9 +20,11 @@ class CSVReporter:
         if self.filemode.startswith("r"):
             raise ValueError("Filemode must allow write options.")
         with open(self.filename, self.filemode) as f:
-            fieldnames = list(
-                results.keys())
+            fieldnames = [
+                "valid",
+                "explanation"]
             writer = csv.DictWriter(
                 f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(results)
+            results.invalid_only = [row for row in writer if row["valid"] is False]
