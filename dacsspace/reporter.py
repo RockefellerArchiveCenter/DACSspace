@@ -5,7 +5,7 @@ class CSVReporter:
     """Creates CSV reports."""
 
     def __init__(self, filename, filemode="w"):
-        # TODO: set filepath for CSV
+        """Sets the filename and filemode."""
         self.filename = filename
         self.filemode = filemode
 
@@ -26,5 +26,5 @@ class CSVReporter:
             writer = csv.DictWriter(
                 f, fieldnames=fieldnames)
             writer.writeheader()
-            writer.writerows(results)
-            results.invalid_only = [row for row in writer if row["valid"] is False]
+            filtered_results = [row for row in results if not row["valid"]] if invalid_only else results
+            writer.writerows(filtered_results)
