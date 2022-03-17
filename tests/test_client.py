@@ -3,7 +3,9 @@ import shutil
 import unittest
 from unittest.mock import Mock, patch
 
-from dacsspace.client import ArchivesSpaceClient
+from asnake.client.web_client import ASnakeAuthError
+
+from dacsspace.client import ArchivesSpaceClient, ASnakeConfigError
 
 
 class ArchivesSpaceClientTests(unittest.TestCase):
@@ -21,7 +23,9 @@ class ArchivesSpaceClientTests(unittest.TestCase):
             - Configuration files without all the necessary values cause an exception to be raised.
             - Valid configuration file allows for successful instantiation of ArchivesSpaceClient class.
         """
-        # ArchivesSpaceClient()
+        with self.assertRaises(ASnakeAuthError) as err:
+            ArchivesSpaceClient()
+        self.assertEqual(str(err.exception), "Failed to authorize ASnake with status: 404")
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
@@ -34,13 +38,15 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         """
         # Incorrect authentication credentials
         mock_post.return_value.status_code = 403
-        with self.assertRaises(Exception, msg="Incorrect authentication credentials"):
+        with self.assertRaises(ASnakeAuthError) as err:
             ArchivesSpaceClient()
+        self.assertEqual(str(err.exception), "Failed to authorize ASnake with status: 403")
 
         # Incorrect base URL
         mock_post.return_value.status_code = 404
-        with self.assertRaises(Exception, msg="Incorrect base URL"):
+        with self.assertRaises(ASnakeAuthError) as err:
             ArchivesSpaceClient()
+        self.assertEqual(str(err.exception), "Failed to authorize ASnake with status: 404")
 
         # Incorrect repository
         mock_post.return_value.status_code = 200
@@ -48,8 +54,9 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         mock_get.return_value.status_code = 200
         mock_get.return_value.text = "v3.0.2"
         mock_get.return_value.json.return_value = {'error': 'Repository not found'}
-        with self.assertRaises(Exception, msg="Incorrect repository"):
+        with self.assertRaises(ASnakeConfigError) as err:
             ArchivesSpaceClient()
+        self.assertEqual(str(err.exception), "Error getting repository: Repository not found")
 
     @patch("asnake.client.web_client.ASnakeClient.get.return_value.json.return_value.search.with_params")
     @patch("asnake.client.web_client.ASnakeClient.get")

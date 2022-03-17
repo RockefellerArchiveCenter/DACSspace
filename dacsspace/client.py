@@ -3,6 +3,10 @@ from configparser import ConfigParser
 from asnake.aspace import ASpace
 
 
+class ASnakeConfigError(Exception):
+    pass
+
+
 class ArchivesSpaceClient:
     """Handles communication with ArchivesSpace."""
 
@@ -13,6 +17,8 @@ class ArchivesSpaceClient:
                              username=config.get('ArchivesSpace', 'user'),
                              password=config.get('ArchivesSpace', 'password'))
         self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))
+        if isinstance(self.repo, dict):
+            raise ASnakeConfigError("Error getting repository: {}".format(self.repo.get("error")))
 
     def get_resources(self, published_only):
         """Returns data about resource records from AS.
