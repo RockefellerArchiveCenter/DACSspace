@@ -1,0 +1,160 @@
+{
+    "lock_version": 17,
+    "title": "Henry Luce Foundation records, Clare Boothe Luce Program",
+    "publish": true,
+    "restrictions": false,
+    "ead_id": "FA1725.xml",
+    "finding_aid_title": "A Guide to the Henry Luce Foundation records, Clare Boothe Luce Program",
+    "finding_aid_filing_title": "Henry Luce Foundation records, Clare Boothe Luce Program",
+    "created_by": "aberish",
+    "last_modified_by": "battalb",
+    "create_time": "2020-02-14T16:21:48Z",
+    "system_mtime": "2021-12-22T15:31:27Z",
+    "user_mtime": "2021-11-05T15:52:48Z",
+    "suppressed": false,
+    "is_slug_auto": false,
+    "id_0": "FA1725",
+    "level": "recordgrp",
+    "resource_type": "records",
+    "finding_aid_description_rules": "Describing Archives: A Content Standard",
+    "finding_aid_language": "eng",
+    "finding_aid_script": "Latn",
+    "jsonmodel_type": "resource",
+    "external_ids": [],
+    "subjects": [
+        {
+            "ref": "/subjects/1725"
+        },
+        {
+            "ref": "/subjects/20081"
+        }
+    ],
+    "linked_events": [],
+    "extents": [
+        {
+            "lock_version": 0,
+            "number": "11.44",
+            "container_summary": "16 letter-sized document boxes",
+            "created_by": "battalb",
+            "last_modified_by": "battalb",
+            "create_time": "2021-11-05T15:53:05Z",
+            "system_mtime": "2021-11-05T15:53:05Z",
+            "user_mtime": "2021-11-05T15:53:05Z",
+            "portion": "whole",
+            "extent_type": "Cubic Feet",
+            "jsonmodel_type": "extent"
+        }
+    ],
+    "lang_materials": [
+        {
+            "lock_version": 0,
+            "created_by": "battalb",
+            "last_modified_by": "battalb",
+            "create_time": "2021-11-05T15:53:05Z",
+            "system_mtime": "2021-11-05T15:53:05Z",
+            "user_mtime": "2021-11-05T15:53:05Z",
+            "jsonmodel_type": "lang_material",
+            "notes": [],
+            "language_and_script": {
+                "lock_version": 0,
+                "created_by": "battalb",
+                "last_modified_by": "battalb",
+                "create_time": "2021-11-05T15:53:05Z",
+                "system_mtime": "2021-11-05T15:53:05Z",
+                "user_mtime": "2021-11-05T15:53:05Z",
+                "language": "eng",
+                "jsonmodel_type": "language_and_script"
+            }
+        }
+    ],
+    "dates": [
+        {
+            "lock_version": 0,
+            "expression": "1986-2014",
+            "begin": "1986",
+            "end": "2014",
+            "created_by": "battalb",
+            "last_modified_by": "battalb",
+            "create_time": "2021-11-05T15:53:05Z",
+            "system_mtime": "2021-11-05T15:53:05Z",
+            "user_mtime": "2021-11-05T15:53:05Z",
+            "date_type": "inclusive",
+            "label": "creation",
+            "jsonmodel_type": "date"
+        }
+    ],
+    "external_documents": [],
+    "rights_statements": [],
+    "linked_agents": [
+        {
+            "role": "creator",
+            "relator": "aut",
+            "terms": [],
+            "ref": "/agents/corporate_entities/4246"
+        }
+    ],
+    "revision_statements": [],
+    "instances": [],
+    "deaccessions": [],
+    "related_accessions": [
+        {
+            "ref": "/repositories/2/accessions/3971"
+        }
+    ],
+    "classifications": [],
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "bf2011f3353f37f389577d36cd942721",
+            "type": "accessrestrict",
+            "rights_restriction": {
+                "local_access_restriction_type": []
+            },
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "Open for research with select materials restricted as noted. Brittle or damaged items are available at the discretion of RAC.",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "b4ad37dbd0891b871c8fe5d3e969f487",
+            "type": "userestrict",
+            "rights_restriction": {
+                "local_access_restriction_type": []
+            },
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "RAC holds legal title. The Henry Luce Foundation retains all applicable intellectual property rights in so far as it holds them.",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "a0fb232b40ebc33ff21f51fc5fa71017",
+            "type": "scopecontent",
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "The Henry Luce Foundation was established by Henry R. Luce in 1936. As a New York-based nonprofit organization, the Luce Foundation awards grants in American Art, Asian studies, Higher Education, Theology, and supports the Clare Boothe Luce Program for women in science, mathematics, and engineering.",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        }
+    ],
+    "metadata_rights_declarations": [],
+    "uri": "/repositories/2/resources/13192",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "tree": {
+        "ref": "/repositories/2/resources/13192/tree"
+    }
+}
