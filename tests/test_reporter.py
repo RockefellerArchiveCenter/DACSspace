@@ -1,11 +1,11 @@
 import os
-import unittest
+from unittest import TestCase
 from unittest.mock import patch
 
 from dacsspace.reporter import CSVReporter
 
 
-class CSVReporterTest(unittest.TestCase):
+class CSVReporterTest(TestCase):
 
     def setUp(self):
         """Sets filename and data attributes for test file.
