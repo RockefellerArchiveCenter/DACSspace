@@ -27,10 +27,10 @@ class ArchivesSpaceClient:
         Returns:
           resources (list): Full JSON of AS resource records
         """
-        if published_only is True:
-            repo_params_search = self.repo.search.with_params(q='publish:true AND primary_type:resource')
+        if published_only:
+            search_query = "publish:true AND primary_type:resource"
         else:
-            repo_params_search = self.repo.search.with_params(q='primary_type:resource')
-        for resource in repo_params_search:
+            search_query = "primary_type:resource"
+        for resource in self.repo.search.with_params(q=search_query):
             resource_json = resource.json()
             yield resource_json
