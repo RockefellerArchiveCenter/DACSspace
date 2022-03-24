@@ -1,6 +1,6 @@
 import json
 
-from jsonschema import Draft202012Validator, validate
+from jsonschema import Draft202012Validator
 
 
 class Validator:
