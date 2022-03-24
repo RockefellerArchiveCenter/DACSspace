@@ -1,10 +1,9 @@
+import configparser
 import os
 import shutil
 import unittest
-from configparser import ConfigParser
 from unittest.mock import Mock, patch
 
-from asnake.aspace import ASpace
 from asnake.client.web_client import ASnakeAuthError
 
 from dacsspace.client import ArchivesSpaceClient, ASnakeConfigError
@@ -17,42 +16,54 @@ class ArchivesSpaceClientTests(unittest.TestCase):
             shutil.move("dacsspace/local_settings.cfg", "dacsspace/local_settings.old")
         shutil.copy("dacsspace/local_settings.example", "dacsspace/local_settings.cfg")
 
-    @patch("requests.get")
-    @patch("requests.post")
+    @patch("requests.Session.get")
+    @patch("requests.Session.post")
     def test_config_file(self, mock_post, mock_get):
         """Asserts that configuration files are correctly handled:
             - Missing configuration files cause an exception to be raised.
             - Configuration files without all the necessary values cause an exception to be raised.
             - Valid configuration file allows for successful instantiation of ArchivesSpaceClient class.
         """
-        # Missing configuration file
-        self.assertTrue(os.path.isfile("dacsspace/local_settings.cfg"))
+        # mock returns from ASpace
+        mock_post.return_value.status_code = 200
+        mock_post.return_value.text = "{\"session\": \"12355\"}"
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.text = "v3.0.2"
 
-        # Configuration file values
-        config = ConfigParser()
+        # Valid config file
+        ArchivesSpaceClient()
+
+        # remove baseurl from ArchivesSpace section
+        config = configparser.ConfigParser()
         config.read("dacsspace/local_settings.cfg")
-        mock_get.return_value.self.aspace_values = ASpace(baseurl=('ArchivesSpace', 'baseURL'),
-                                                          username=('ArchivesSpace', 'user'),
-                                                          password=('ArchivesSpace', 'password'))
+        config.remove_option('ArchivesSpace', 'baseurl')
+        with open("dacsspace/local_settings.cfg", "w") as cf:
+            config.write(cf)
 
         # Configuration file missing necessary options
-        with self.assertRaises(config.NoOptionError) as err:
+        with self.assertRaises(configparser.NoOptionError) as err:
             ArchivesSpaceClient()
         self.assertEqual(str(err.exception), "No option 'baseurl' in section: 'ArchivesSpace'")
-        self.assertEqual(str(err.exception), "No option 'user' in section: 'ArchivesSpace'")
-        self.assertEqual(str(err.exception), "No option 'password' in section: 'ArchivesSpace'")
 
-        # Configuration file missing necessary keys
-        with self.assertRaises(KeyError) as err:
-            ArchivesSpaceClient()
-        self.assertEqual(str(err.exception), "KeyError: baseurl")
-        self.assertEqual(str(err.exception), "KeyError: user")
-        self.assertEqual(str(err.exception), "KeyError: password")
+        # remove ArchivesSpace section
+        config = configparser.ConfigParser()
+        config.read("dacsspace/local_settings.cfg")
+        config.remove_section('ArchivesSpace')
+        with open("dacsspace/local_settings.cfg", "w") as cf:
+            config.write(cf)
 
         # Configuration file missing necessary section
-        with self.assertRaises(config.NoSectionError) as err:
+        with self.assertRaises(configparser.NoSectionError) as err:
             ArchivesSpaceClient()
         self.assertEqual(str(err.exception), "No section: 'ArchivesSpace'")
+
+        # delete file
+        os.remove("dacsspace/local_settings.cfg")
+
+        # Missing configuration file
+        with self.assertRaises(IOError) as err:
+            ArchivesSpaceClient()
+        self.assertEqual(str(err.exception), "Could not find a configuration file at dacsspace/local_settings.cfg")
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
