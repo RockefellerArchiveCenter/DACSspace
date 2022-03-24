@@ -13,8 +13,12 @@ class ArchivesSpaceClientTests(unittest.TestCase):
     def setUp(self):
         """Move existing config file and replace with sample config."""
         if os.path.isfile("dacsspace/local_settings.cfg"):
-            shutil.move("dacsspace/local_settings.cfg", "dacsspace/local_settings.old")
-        shutil.copy("dacsspace/local_settings.example", "dacsspace/local_settings.cfg")
+            shutil.move(
+                "dacsspace/local_settings.cfg",
+                "dacsspace/local_settings.old")
+        shutil.copy(
+            "dacsspace/local_settings.example",
+            "dacsspace/local_settings.cfg")
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
@@ -43,7 +47,8 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         # Configuration file missing necessary options
         with self.assertRaises(configparser.NoOptionError) as err:
             ArchivesSpaceClient()
-        self.assertEqual(str(err.exception), "No option 'baseurl' in section: 'ArchivesSpace'")
+        self.assertEqual(str(err.exception),
+                         "No option 'baseurl' in section: 'ArchivesSpace'")
 
         # remove ArchivesSpace section
         config = configparser.ConfigParser()
@@ -63,7 +68,8 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         # Missing configuration file
         with self.assertRaises(IOError) as err:
             ArchivesSpaceClient()
-        self.assertEqual(str(err.exception), "Could not find a configuration file at dacsspace/local_settings.cfg")
+        self.assertEqual(str(err.exception),
+                         "Could not find a configuration file at dacsspace/local_settings.cfg")
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
@@ -78,23 +84,27 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         mock_post.return_value.status_code = 403
         with self.assertRaises(ASnakeAuthError) as err:
             ArchivesSpaceClient()
-        self.assertEqual(str(err.exception), "Failed to authorize ASnake with status: 403")
+        self.assertEqual(str(err.exception),
+                         "Failed to authorize ASnake with status: 403")
 
         # Incorrect base URL
         mock_post.return_value.status_code = 404
         with self.assertRaises(ASnakeAuthError) as err:
             ArchivesSpaceClient()
-        self.assertEqual(str(err.exception), "Failed to authorize ASnake with status: 404")
+        self.assertEqual(str(err.exception),
+                         "Failed to authorize ASnake with status: 404")
 
         # Incorrect repository
         mock_post.return_value.status_code = 200
         mock_post.return_value.text = "{\"session\": \"12355\"}"
         mock_get.return_value.status_code = 200
         mock_get.return_value.text = "v3.0.2"
-        mock_get.return_value.json.return_value = {'error': 'Repository not found'}
+        mock_get.return_value.json.return_value = {
+            'error': 'Repository not found'}
         with self.assertRaises(ASnakeConfigError) as err:
             ArchivesSpaceClient()
-        self.assertEqual(str(err.exception), "Error getting repository: Repository not found")
+        self.assertEqual(str(err.exception),
+                         "Error getting repository: Repository not found")
 
     @patch("asnake.client.web_client.ASnakeClient.get.return_value.json.return_value.search.with_params")
     @patch("asnake.client.web_client.ASnakeClient.get")
@@ -107,7 +117,8 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         # Test search for only published resources
         list(client.get_resources(True))
         self.assertEqual(mock_search.call_count, 1)
-        mock_search.assert_called_with(q='publish:true AND primary_type:resource')
+        mock_search.assert_called_with(
+            q='publish:true AND primary_type:resource')
         mock_search.reset_mock()
 
         # Test search for all resources
@@ -123,7 +134,8 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         mock_get.return_value.text = "v3.0.2"
         client = ArchivesSpaceClient()
 
-        # create a mocked object which acts like an `asnake.jsonmodel.JSONModel` object
+        # create a mocked object which acts like an
+        # `asnake.jsonmodel.JSONModel` object
         mock_resource = Mock()
         expected_return = {"jsonmodel_type": "resource"}
         mock_resource.json.return_value = expected_return
@@ -136,4 +148,6 @@ class ArchivesSpaceClientTests(unittest.TestCase):
     def tearDown(self):
         """Replace sample config with existing config."""
         if os.path.isfile("dacsspace/local_settings.old"):
-            shutil.move("dacsspace/local_settings.old", "dacsspace/local_settings.cfg")
+            shutil.move(
+                "dacsspace/local_settings.old",
+                "dacsspace/local_settings.cfg")
