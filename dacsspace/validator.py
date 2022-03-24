@@ -23,9 +23,7 @@ class Validator:
         """
         schema = self.schema
         validator = Draft7Validator(schema)
-        errors_found = []
-        for error in validator.iter_errors(data):
-            errors_found.append(error.message)
+        errors_found = [error.message for error in validator.iter_errors(data)]
         if len(errors_found):
             return {"valid": False, "explanation": "\n".join(errors_found)}
         else:
