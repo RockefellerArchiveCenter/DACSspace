@@ -1,8 +1,10 @@
 import os
 import shutil
 import unittest
+from configparser import ConfigParser
 from unittest.mock import Mock, patch
 
+from asnake.aspace import ASpace
 from asnake.client.web_client import ASnakeAuthError
 
 from dacsspace.client import ArchivesSpaceClient, ASnakeConfigError
@@ -23,9 +25,34 @@ class ArchivesSpaceClientTests(unittest.TestCase):
             - Configuration files without all the necessary values cause an exception to be raised.
             - Valid configuration file allows for successful instantiation of ArchivesSpaceClient class.
         """
-        with self.assertRaises(ASnakeAuthError) as err:
+        # Missing configuration file
+        self.assertTrue(os.path.isfile("dacsspace/local_settings.cfg"))
+
+        # Configuration file values
+        config = ConfigParser()
+        config.read("dacsspace/local_settings.cfg")
+        mock_get.return_value.self.aspace_values = ASpace(baseurl=('ArchivesSpace', 'baseURL'),
+                                                          username=('ArchivesSpace', 'user'),
+                                                          password=('ArchivesSpace', 'password'))
+
+        # Configuration file missing necessary options
+        with self.assertRaises(config.NoOptionError) as err:
             ArchivesSpaceClient()
-        self.assertEqual(str(err.exception), "Failed to authorize ASnake with status: 404")
+        self.assertEqual(str(err.exception), "No option 'baseurl' in section: 'ArchivesSpace'")
+        self.assertEqual(str(err.exception), "No option 'user' in section: 'ArchivesSpace'")
+        self.assertEqual(str(err.exception), "No option 'password' in section: 'ArchivesSpace'")
+
+        # Configuration file missing necessary keys
+        with self.assertRaises(KeyError) as err:
+            ArchivesSpaceClient()
+        self.assertEqual(str(err.exception), "KeyError: baseurl")
+        self.assertEqual(str(err.exception), "KeyError: user")
+        self.assertEqual(str(err.exception), "KeyError: password")
+
+        # Configuration file missing necessary section
+        with self.assertRaises(config.NoSectionError) as err:
+            ArchivesSpaceClient()
+        self.assertEqual(str(err.exception), "No section: 'ArchivesSpace'")
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
