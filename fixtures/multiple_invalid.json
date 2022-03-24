@@ -1,6 +1,5 @@
 {
     "lock_version": 17,
-    "title": "Henry Luce Foundation records, Clare Boothe Luce Program",
     "publish": true,
     "restrictions": false,
     "ead_id": "FA1725.xml",
@@ -13,7 +12,6 @@
     "user_mtime": "2021-11-05T15:52:48Z",
     "suppressed": false,
     "is_slug_auto": false,
-    "id_0": "FA1725",
     "level": "recordgrp",
     "resource_type": "records",
     "finding_aid_description_rules": "Describing Archives: A Content Standard",
@@ -149,7 +147,7 @@
             "publish": true
         }
     ],
-    "metadata_rights_declarations": ["ADD SOMETHING LATER"],
+    "metadata_rights_declarations": [],
     "uri": "/repositories/2/resources/13192",
     "repository": {
         "ref": "/repositories/2"
