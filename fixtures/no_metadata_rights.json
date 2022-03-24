@@ -149,14 +149,7 @@
             "publish": true
         }
     ],
-    "metadata_rights_declarations": [
-      {
-        "license": "",
-        "descriptive_note": "",
-        "file_uri": "http://foo.bar",
-        "last_verified_date": "2021-11-05T15:53:05Z"
-      }
-    ],
+    "metadata_rights_declarations": [],
     "uri": "/repositories/2/resources/13192",
     "repository": {
         "ref": "/repositories/2"
