@@ -3,3 +3,4 @@ log.txt
 *.csv
 *__pycache__
 .coverage
+.tox
