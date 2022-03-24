@@ -12,7 +12,8 @@ class TestValidator(unittest.TestCase):
         valid_json = "fixtures/valid_resource.json"
         invalid_fixtures = [
             "fixtures/multiple_invalid.json",
-            "fixtures/no_metadata_rights.json"]
+            "fixtures/no_metadata_rights.json",
+            "fixtures/no_accessrestrict.json"]
         with open(valid_json, 'r') as v:
             valid_json = json.load(v)
             result = Validator().validate_data(valid_json)

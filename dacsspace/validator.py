@@ -1,6 +1,6 @@
 import json
 
-from jsonschema import Draft7Validator
+from jsonschema import Draft202012Validator, validate
 
 
 class Validator:
@@ -21,8 +21,7 @@ class Validator:
            indication of the validation result and, if necessary, an explanation
            of any validation errors. { "valid": False, "explanation": "You are missing the following fields..." }
         """
-        schema = self.schema
-        validator = Draft7Validator(schema)
+        validator = Draft202012Validator(self.schema)
         errors_found = [error.message for error in validator.iter_errors(data)]
         if len(errors_found):
             return {"valid": False, "explanation": "\n".join(errors_found)}
