@@ -1,4 +1,5 @@
 from configparser import ConfigParser
+from os.path import isfile
 
 from asnake.aspace import ASpace
 
@@ -11,9 +12,12 @@ class ArchivesSpaceClient:
     """Handles communication with ArchivesSpace."""
 
     def __init__(self):
+        config_filepath = "dacsspace/local_settings.cfg"
+        if not isfile("dacsspace/local_settings.cfg"):
+            raise IOError("Could not find a configuration file at {}".format(config_filepath))
         config = ConfigParser()
-        config.read("dacsspace/local_settings.cfg")
-        self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseURL'),
+        config.read(config_filepath)
+        self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseurl'),
                              username=config.get('ArchivesSpace', 'user'),
                              password=config.get('ArchivesSpace', 'password'))
         self.repo = self.aspace.repositories(config.get('ArchivesSpace', 'repository'))

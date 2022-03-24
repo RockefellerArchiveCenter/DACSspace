@@ -1,5 +1,5 @@
 [ArchivesSpace]
-baseURL: https://sandbox.archivesspace.org/api/
+baseurl: https://sandbox.archivesspace.org/api/
 repository: 101
 user: admin
 password: admin
