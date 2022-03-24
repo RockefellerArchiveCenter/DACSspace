@@ -26,5 +26,6 @@ class CSVReporter:
             writer = csv.DictWriter(
                 f, fieldnames=fieldnames)
             writer.writeheader()
-            filtered_results = [row for row in results if not row["valid"]] if invalid_only else results
+            filtered_results = [
+                row for row in results if not row["valid"]] if invalid_only else results
             writer.writerows(filtered_results)

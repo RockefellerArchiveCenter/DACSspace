@@ -1,0 +1,18 @@
+language: python
+dist: bionic
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.cache/pre-commit
+install:
+  - pip install tox
+script:
+  - tox
+matrix:
+  include:
+    - python: "3.10"
+      env: TOXENV=py310
+    - python: "3.10"
+      env: TOXENV=linting
+notifications:
+  email: false
