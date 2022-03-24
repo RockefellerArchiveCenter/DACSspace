@@ -8,17 +8,19 @@ from asnake.client.web_client import ASnakeAuthError
 
 from dacsspace.client import ArchivesSpaceClient, ASnakeConfigError
 
+CONFIG_FILEPATH = "dacsspace/local_settings.cfg"
+
 
 class ArchivesSpaceClientTests(unittest.TestCase):
     def setUp(self):
         """Move existing config file and replace with sample config."""
-        if os.path.isfile("dacsspace/local_settings.cfg"):
+        if os.path.isfile(CONFIG_FILEPATH):
             shutil.move(
-                "dacsspace/local_settings.cfg",
+                CONFIG_FILEPATH,
                 "dacsspace/local_settings.old")
         shutil.copy(
             "dacsspace/local_settings.example",
-            "dacsspace/local_settings.cfg")
+            CONFIG_FILEPATH)
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
@@ -39,9 +41,9 @@ class ArchivesSpaceClientTests(unittest.TestCase):
 
         # remove baseurl from ArchivesSpace section
         config = configparser.ConfigParser()
-        config.read("dacsspace/local_settings.cfg")
+        config.read(CONFIG_FILEPATH)
         config.remove_option('ArchivesSpace', 'baseurl')
-        with open("dacsspace/local_settings.cfg", "w") as cf:
+        with open(CONFIG_FILEPATH, "w") as cf:
             config.write(cf)
 
         # Configuration file missing necessary options
@@ -52,9 +54,9 @@ class ArchivesSpaceClientTests(unittest.TestCase):
 
         # remove ArchivesSpace section
         config = configparser.ConfigParser()
-        config.read("dacsspace/local_settings.cfg")
+        config.read(CONFIG_FILEPATH)
         config.remove_section('ArchivesSpace')
-        with open("dacsspace/local_settings.cfg", "w") as cf:
+        with open(CONFIG_FILEPATH, "w") as cf:
             config.write(cf)
 
         # Configuration file missing necessary section
@@ -63,7 +65,7 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         self.assertEqual(str(err.exception), "No section: 'ArchivesSpace'")
 
         # delete file
-        os.remove("dacsspace/local_settings.cfg")
+        os.remove(CONFIG_FILEPATH)
 
         # Missing configuration file
         with self.assertRaises(IOError) as err:
@@ -150,4 +152,4 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         if os.path.isfile("dacsspace/local_settings.old"):
             shutil.move(
                 "dacsspace/local_settings.old",
-                "dacsspace/local_settings.cfg")
+                CONFIG_FILEPATH)
