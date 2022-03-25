@@ -33,35 +33,38 @@
         },
         "notes": {
             "type": "array",
-            "contains": {
-                "anyOf": [
-                    {
-                        "type": "object",
-                        "required": [
-                            "type"
-                        ],
-                        "properties": {
-                            "type": {
-                                "type": "string",
-                                "const": "accessrestrict"
-                            }
-                        }
-                    },
-                    {
-                        "type": "object",
-                        "required": [
-                            "type"
-                        ],
-                        "properties": {
-                            "type": {
-                                "type": "string",
-                                "const": "scopecontent"
-                            }
-                        }
+            "allOf": [
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "scopecontent"
                     }
-                ]
-            },
-            "minContains": 2
+                  }
+                },
+                "minContains": 1
+              },
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "accessrestrict"
+                    }
+                  }
+                },
+                "minContains": 1
+              }
+            ]
         },
         "lang_materials": {
             "type": "array",
