@@ -12,7 +12,7 @@ class TestValidator(unittest.TestCase):
     def test_validator(self):
         valid_fixtures = [
             f for f in VALID_FIXTURE_DIRECTORY.iterdir() if (
-                VALID_FIXTURE_DIRECTORY.joinpath(f).is_file() and str(
+                f.is_file() and str(
                     f.name).endswith("json"))]
         for valid in valid_fixtures:
             with open(valid, 'r') as v:
@@ -22,7 +22,7 @@ class TestValidator(unittest.TestCase):
             self.assertEqual(result["valid"], True)
         invalid_fixtures = [
             f for f in INVALID_FIXTURE_DIRECTORY.iterdir() if (
-                INVALID_FIXTURE_DIRECTORY.joinpath(f).is_file() and str(
+                f.is_file() and str(
                     f.name).endswith("json"))]
         for invalid in invalid_fixtures:
             with open(invalid, 'r') as i:
