@@ -131,6 +131,19 @@
                 }
             ],
             "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "a0fb232b40ebc33ff21f51fc5fa71017",
+            "type": "scopecontent",
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "The Henry Luce Foundation was established by Henry R. Luce in 1936. As a New York-based nonprofit organization, the Luce Foundation awards grants in American Art, Asian studies, Higher Education, Theology, and supports the Clare Boothe Luce Program for women in science, mathematics, and engineering.",
+                    "publish": true
+                }
+            ],
+            "publish": true
         }
     ],
     "metadata_rights_declarations": [
