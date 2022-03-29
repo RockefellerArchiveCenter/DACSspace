@@ -1,14 +1,25 @@
 import json
 
-from jsonschema import Draft7Validator
+from jsonschema import Draft202012Validator
 
 
 class Validator:
     """Validates data from ArchivesSpace."""
 
-    def __init__(self):
-        with open("single_level_required.json", "r") as json_file:
+    def __init__(self, schema_identifier, schema_filepath):
+        """Loads and validates the schema from an identifier or filepath.
+
+        Args:
+            schema_identifier (str): a pointer to a schema that is part of
+            DACSspace, located in the `schemas` directory.
+            schema_filepath (str): a filepath pointing to an external schema.
+        """
+        self.validator = Draft202012Validator
+        if not schema_filepath:
+            schema_filepath = f"schemas/{schema_identifier.removesuffix('.json')}.json"
+        with open(schema_filepath, "r") as json_file:
             self.schema = json.load(json_file)
+        self.validator.check_schema(self.schema)
 
     def validate_data(self, data):
         """Validates data.
@@ -21,8 +32,7 @@ class Validator:
            indication of the validation result and, if necessary, an explanation
            of any validation errors. { "valid": False, "explanation": "You are missing the following fields..." }
         """
-        schema = self.schema
-        validator = Draft7Validator(schema)
+        validator = self.validator(self.schema)
         errors_found = [error.message for error in validator.iter_errors(data)]
         if len(errors_found):
             return {"valid": False, "explanation": "\n".join(errors_found)}
