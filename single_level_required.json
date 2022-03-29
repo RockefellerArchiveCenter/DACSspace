@@ -46,8 +46,7 @@
                       "const": "scopecontent"
                     }
                   }
-                },
-                "minContains": 1
+                }
               },
               {
                 "contains": {
@@ -61,8 +60,7 @@
                       "const": "accessrestrict"
                     }
                   }
-                },
-                "minContains": 1
+                }
               }
             ]
         },
