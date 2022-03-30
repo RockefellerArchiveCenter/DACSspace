@@ -12,9 +12,9 @@ class DACSspace:
         """Checks csv filepath to make sure it has the proper extension and characters."""
         if not csv_filepath.endswith(".csv"):
             raise ValueError("File must have .csv extension")
-        if re.search(r'[\\/*?:"<>|]', csv_filepath):
+        if re.search(r'[*?:"<>|]', csv_filepath):
             raise ValueError(
-                'File name cannot contain the following characters: \\ / * ? : " < > | ')
+                'File name cannot contain the following characters: * ? : " < > | ')
 
     def run(self, published_only, invalid_only):
         client = ArchivesSpaceClient()
