@@ -30,7 +30,6 @@ parser.add_argument(
     '--invalid_only',
     help='Reports only invalid data',
     action='store_false')
-parser.add_argument()
 args = parser.parse_args()
 
 DACSspace().run(args.published_only, args.invalid_only)
