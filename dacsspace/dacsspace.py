@@ -32,4 +32,5 @@ parser.add_argument(
     action='store_false')
 args = parser.parse_args()
 
-DACSspace().run(args.published_only, args.invalid_only)
+if __name__ == '__main__':
+    DACSspace().run(args.published_only, args.invalid_only)
