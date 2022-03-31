@@ -20,17 +20,17 @@ class DACSspace:
         reporter.write_report(results, invalid_only)
 
 
-parser = argparse.ArgumentParser(
-    description="Fetches data from AS, validates and reports results")
-parser.add_argument(
-    '--published_only',
-    help='Fetches only published records from AS',
-    action='store_true')
-parser.add_argument(
-    '--invalid_only',
-    help='Reports only invalid data',
-    action='store_false')
-args = parser.parse_args()
-
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description="Fetches data from AS, validates and reports results")
+    parser.add_argument(
+        '--published_only',
+        help='Fetches only published records from AS',
+        action='store_true')
+    parser.add_argument(
+        '--invalid_only',
+        help='Reports only invalid data',
+        action='store_false')
+    args = parser.parse_args()
+
     DACSspace().run(args.published_only, args.invalid_only)
