@@ -30,7 +30,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--invalid_only',
         help='Reports only invalid data',
-        action='store_false')
+        action='store_true')
     args = parser.parse_args()
 
     DACSspace().run(args.published_only, args.invalid_only)
