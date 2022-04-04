@@ -1,10 +1,14 @@
 import json
 import os
 import unittest
+from pathlib import Path
 
 from jsonschema.exceptions import SchemaError
 
 from dacsspace.validator import Validator
+
+INVALID_FIXTURE_DIRECTORY = Path("fixtures", "invalid")
+VALID_FIXTURE_DIRECTORY = Path("fixtures", "valid")
 
 
 class TestValidator(unittest.TestCase):
@@ -36,22 +40,35 @@ class TestValidator(unittest.TestCase):
         os.remove(test_schema_filepath)
 
     def test_validator(self):
-        valid_json = "fixtures/valid_resource.json"
+        valid_fixtures = [
+            f for f in VALID_FIXTURE_DIRECTORY.iterdir() if (
+                f.is_file() and str(
+                    f.name).endswith("json"))]
+        for valid in valid_fixtures:
+            with open(valid, 'r') as v:
+                valid_json = json.load(v)
+                result = Validator(
+                    'single_level_required',
+                    None).validate_data(valid_json)
+            self.assertTrue(isinstance(result, dict))
+            self.assertEqual(result["valid"], True)
         invalid_fixtures = [
-            "fixtures/multiple_invalid.json",
-            "fixtures/no_metadata_rights.json"]
-        with open(valid_json, 'r') as v:
-            valid_json = json.load(v)
-            result = Validator(
-                'single_level_required',
-                None).validate_data(valid_json)
-        self.assertTrue(isinstance(result, dict))
-        self.assertEqual(result["valid"], True)
-        for f in invalid_fixtures:
-            with open(f, 'r') as i:
+            f for f in INVALID_FIXTURE_DIRECTORY.iterdir() if (
+                f.is_file() and str(
+                    f.name).endswith("json"))]
+        for invalid in invalid_fixtures:
+            with open(invalid, 'r') as i:
                 invalid_json = json.load(i)
                 result = Validator(
                     'single_level_required',
                     None).validate_data(invalid_json)
             self.assertTrue(isinstance(result, dict))
             self.assertEqual(result["valid"], False)
+        for valid in valid_fixtures:
+            with open(valid, 'r') as v:
+                valid_json = json.load(v)
+                result = Validator(
+                    'single_level_required',
+                    None).validate_data(valid_json)
+            self.assertTrue(isinstance(result, dict))
+            self.assertEqual(result["valid"], True)
