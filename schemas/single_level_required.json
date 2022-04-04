@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/2020-12/schema#",
-    "id": "single_level_required.json",
+    "$id": "single_level_required.json",
     "type": "object",
     "title": "DACSspace Single Level Required Schema",
     "required": [
