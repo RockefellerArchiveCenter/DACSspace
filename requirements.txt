@@ -14,10 +14,12 @@ boltons==21.0.0
     # via archivessnake
 certifi==2021.10.8
     # via requests
-charset-normalizer==2.0.11
+charset-normalizer==2.0.12
     # via requests
 idna==3.3
     # via requests
+jarowinkler==1.0.2
+    # via rapidfuzz
 jsonschema==4.4.0
     # via -r requirements.in
 more-itertools==8.12.0
@@ -26,7 +28,7 @@ pyrsistent==0.18.1
     # via jsonschema
 pyyaml==6.0
     # via archivessnake
-rapidfuzz==2.0.5
+rapidfuzz==2.0.7
     # via archivessnake
 requests==2.27.1
     # via
@@ -34,5 +36,5 @@ requests==2.27.1
     #   archivessnake
 structlog==21.5.0
     # via archivessnake
-urllib3==1.26.8
+urllib3==1.26.9
     # via requests
