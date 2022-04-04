@@ -1,0 +1,127 @@
+{
+    "$schema": "https://json-schema.org/2020-12/schema#",
+    "$id": "rac.json",
+    "type": "object",
+    "title": "DACSspace Rockefeller Archive Center Schema",
+    "required": [
+        "id_0",
+        "title",
+        "dates",
+        "extents",
+        "linked_agents",
+        "lang_materials"
+    ],
+    "properties": {
+        "id_0": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "dates": {
+            "type": "array",
+            "minItems": 1
+        },
+        "extents": {
+            "type": "array",
+            "minItems": 1
+        },
+        "linked_agents": {
+            "type": "array",
+            "minItems": 1
+        },
+        "notes": {
+            "type": "array",
+            "allOf": [
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "scopecontent"
+                    }
+                  }
+                }
+              },
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "accessrestrict"
+                    }
+                  }
+                }
+              },
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "bioghist"
+                    }
+                  }
+                }
+              },
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "arrangement"
+                    }
+                  }
+                }
+              },
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "userestrict"
+                    }
+                  }
+                }
+              },
+              {
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "acqinfo"
+                    }
+                  }
+                }
+              }
+            ]
+        },
+        "lang_materials": {
+            "type": "array",
+            "minItems": 1
+        }
+    }
+}
