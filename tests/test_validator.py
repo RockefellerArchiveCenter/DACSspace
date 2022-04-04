@@ -58,10 +58,10 @@ class TestValidator(unittest.TestCase):
 
     def test_single_level_required_schema(self):
         """Asserts that the single_level_required schema validates fixtures as expected."""
-        self.validate_files(Path("fixtures", "valid"),
+        self.validate_files(Path("fixtures", "single_level_required", "valid"),
                             'single_level_required',
                             True)
-        self.validate_files(Path("fixtures", "invalid"),
+        self.validate_files(Path("fixtures", "single_level_required", "invalid"),
                             'single_level_required',
                             False)
 
