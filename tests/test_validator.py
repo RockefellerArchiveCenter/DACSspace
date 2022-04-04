@@ -47,7 +47,9 @@ class TestValidator(unittest.TestCase):
         for valid in valid_fixtures:
             with open(valid, 'r') as v:
                 valid_json = json.load(v)
-                result = Validator().validate_data(valid_json)
+                result = Validator(
+                    'single_level_required',
+                    None).validate_data(valid_json)
             self.assertTrue(isinstance(result, dict))
             self.assertEqual(result["valid"], True)
         invalid_fixtures = [
@@ -62,10 +64,11 @@ class TestValidator(unittest.TestCase):
                     None).validate_data(invalid_json)
             self.assertTrue(isinstance(result, dict))
             self.assertEqual(result["valid"], False)
-        with open(valid_json, 'r') as v:
-            valid_json = json.load(v)
-            result = Validator(
-                'single_level_required',
-                None).validate_data(valid_json)
-        self.assertTrue(isinstance(result, dict))
-        self.assertEqual(result["valid"], True)
+        for valid in valid_fixtures:
+            with open(valid, 'r') as v:
+                valid_json = json.load(v)
+                result = Validator(
+                    'single_level_required',
+                    None).validate_data(valid_json)
+            self.assertTrue(isinstance(result, dict))
+            self.assertEqual(result["valid"], True)
