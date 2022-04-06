@@ -1,8 +1,8 @@
 import argparse
 
-from client import ArchivesSpaceClient
-from reporter import CSVReporter
-from validator import Validator
+from .client import ArchivesSpaceClient
+from .reporter import CSVReporter
+from .validator import Validator
 
 
 class DACSspace:
@@ -43,8 +43,8 @@ if __name__ == '__main__':
         type=str, default=None)
     args = parser.parse_args()
 
-DACSspace().run(
-    args.published_only,
-    args.invalid_only,
-    args.schema_identifier,
-    args.schema_filepath)
+    DACSspace().run(
+        args.published_only,
+        args.invalid_only,
+        args.schema_identifier,
+        args.schema_filepath)
