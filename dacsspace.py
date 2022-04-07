@@ -1,8 +1,8 @@
 import argparse
 
-from .client import ArchivesSpaceClient
-from .reporter import CSVReporter
-from .validator import Validator
+from dacsspace.client import ArchivesSpaceClient
+from dacsspace.reporter import CSVReporter
+from dacsspace.validator import Validator
 
 
 class DACSspace:
