@@ -1,5 +1,6 @@
 {
     "lock_version": 17,
+    "title": "Henry Luce Foundation records, Clare Boothe Luce Program",
     "publish": true,
     "restrictions": false,
     "ead_id": "FA1725.xml",
@@ -12,6 +13,7 @@
     "user_mtime": "2021-11-05T15:52:48Z",
     "suppressed": false,
     "is_slug_auto": false,
+    "id_0": "FA1725",
     "level": "recordgrp",
     "resource_type": "records",
     "finding_aid_description_rules": "Describing Archives: A Content Standard",
@@ -103,22 +105,6 @@
     "notes": [
         {
             "jsonmodel_type": "note_multipart",
-            "persistent_id": "bf2011f3353f37f389577d36cd942721",
-            "type": "accessrestrict",
-            "rights_restriction": {
-                "local_access_restriction_type": []
-            },
-            "subnotes": [
-                {
-                    "jsonmodel_type": "note_text",
-                    "content": "Open for research with select materials restricted as noted. Brittle or damaged items are available at the discretion of RAC.",
-                    "publish": true
-                }
-            ],
-            "publish": true
-        },
-        {
-            "jsonmodel_type": "note_multipart",
             "persistent_id": "b4ad37dbd0891b871c8fe5d3e969f487",
             "type": "userestrict",
             "rights_restriction": {
@@ -132,22 +118,16 @@
                 }
             ],
             "publish": true
-        },
-        {
-            "jsonmodel_type": "note_multipart",
-            "persistent_id": "a0fb232b40ebc33ff21f51fc5fa71017",
-            "type": "scopecontent",
-            "subnotes": [
-                {
-                    "jsonmodel_type": "note_text",
-                    "content": "The Henry Luce Foundation was established by Henry R. Luce in 1936. As a New York-based nonprofit organization, the Luce Foundation awards grants in American Art, Asian studies, Higher Education, Theology, and supports the Clare Boothe Luce Program for women in science, mathematics, and engineering.",
-                    "publish": true
-                }
-            ],
-            "publish": true
         }
     ],
-    "metadata_rights_declarations": [],
+    "metadata_rights_declarations": [
+      {
+        "license": "",
+        "descriptive_note": "",
+        "file_uri": "http://foo.bar",
+        "last_verified_date": "2021-11-05T15:53:05Z"
+      }
+    ],
     "uri": "/repositories/2/resources/13192",
     "repository": {
         "ref": "/repositories/2"
