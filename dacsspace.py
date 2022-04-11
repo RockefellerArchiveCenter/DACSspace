@@ -1,25 +1,6 @@
 import argparse
 
-from dacsspace.client import ArchivesSpaceClient
-from dacsspace.reporter import CSVReporter
-from dacsspace.validator import Validator
-
-
-class DACSspace:
-    """Base DACSspace class. Fetches data from AS, validates and reports results."""
-
-    def run(self, published_only, invalid_only,
-            schema_identifier, schema_filepath):
-        client = ArchivesSpaceClient()
-        validator = Validator(schema_identifier, schema_filepath)
-        reporter = CSVReporter()
-        data = client.get_resources(published_only)
-        results = []
-        for obj in data:
-            result = validator.validate(obj)
-            results.append(result)
-        reporter.write_report(results, invalid_only)
-
+from dacsspace.dacsspace import DACSspace
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
