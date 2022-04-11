@@ -3,7 +3,3 @@ baseurl: https://sandbox.archivesspace.org/api/
 repository: 101
 user: admin
 password: admin
-
-[Destinations]
-directory: #Directory where you would like to save the csv file
-filename: dacs_singlelevel_report.csv
