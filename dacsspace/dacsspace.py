@@ -23,5 +23,5 @@ class DACSspace:
         validator = Validator(schema_identifier, schema_filepath)
         reporter = CSVReporter(self.csv_filepath)
         data = client.get_resources(published_only)
-        results = [validator.validate(obj) for obj in data]
+        results = [validator.validate_data(obj) for obj in data]
         reporter.write_report(results, invalid_only)
