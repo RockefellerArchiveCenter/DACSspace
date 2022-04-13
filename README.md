@@ -6,9 +6,11 @@ DACSspace utilizes the ArchivesSpace API to check resources for DACS compliance 
 
 ## Requirements
 
-*   Python 3.7
-*   ConfigParser
+*   Python 3 (tested on Python 3.10)
+*   [ArchivesSnake](https://github.com/archivesspace-labs/ArchivesSnake) (Python library) (0.9.1 or higher)
 *   Requests module
+*   JSONschema
+*   [tox](https://tox.readthedocs.io/) (for running tests)
 *   [pre-commit](https://pre-commit.com/) (for running linters before committing)
     *   After locally installing pre-commit, install the git-hook scripts in the DACSSpace directory:
 
@@ -18,11 +20,13 @@ DACSspace utilizes the ArchivesSpace API to check resources for DACS compliance 
 
 ## Installation
 
-Download [Python](https://www.python.org/downloads/)
+Download and install [Python](https://www.python.org/downloads/)
 
-If you are using Windows, add Python to your [PATH variable](https://docs.python.org/2/using/windows.html)
+* If you are using Windows, add Python to your [PATH variable](https://docs.python.org/2/using/windows.html)
 
-Install requirements ([ConfigParser instructions](https://docs.python.org/2/library/configparser.html) /  [Requests instructions](http://docs.python-requests.org/en/master/user/install/))
+Download or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository 
+
+Install requirements from within the main DACSspace directory: ```pip install -r requirements.txt```
 
 ## Setup
 
