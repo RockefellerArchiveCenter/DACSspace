@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from dacsspace import DACSspace
+from dacsspace.dacsspace import DACSspace
 
 
 class TestDACSspace(TestCase):
