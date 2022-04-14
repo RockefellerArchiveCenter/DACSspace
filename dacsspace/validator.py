@@ -33,8 +33,12 @@ class Validator:
            of any validation errors. { "valid": False, "explanation": "You are missing the following fields..." }
         """
         validator = self.validator(self.schema)
-        errors_found = [error.message for error in validator.iter_errors(data)]
+        errors_found = [
+            error.message for error in validator.iter_errors(data)]
+        print(errors_found)
+        for error in validator.iter_errors(data):
+            print(error.schema_path)
         if len(errors_found):
-            return {"valid": False, "explanation": "\n".join(errors_found)}
+            return {"valid": False, "explanation": (errors_found)}
         else:
             return {"valid": True}
