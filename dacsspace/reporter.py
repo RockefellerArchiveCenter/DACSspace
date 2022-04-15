@@ -21,6 +21,7 @@ class CSVReporter:
             raise ValueError("Filemode must allow write options.")
         with open(self.filename, self.filemode) as f:
             fieldnames = [
+                "uri",
                 "valid",
                 "explanation"]
             writer = csv.DictWriter(

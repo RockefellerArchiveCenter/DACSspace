@@ -15,15 +15,13 @@ class DACSspace:
         if re.search(r'[*?:"<>|]', csv_filepath):
             raise ValueError(
                 'File name cannot contain the following characters: * ? : " < > | ')
+        self.csv_filepath = csv_filepath
 
     def run(self, published_only, invalid_only,
             schema_identifier, schema_filepath):
         client = ArchivesSpaceClient()
         validator = Validator(schema_identifier, schema_filepath)
-        reporter = CSVReporter()
+        reporter = CSVReporter(self.csv_filepath)
         data = client.get_resources(published_only)
-        results = []
-        for obj in data:
-            result = validator.validate(obj)
-            results.append(result)
+        results = [validator.validate_data(obj) for obj in data]
         reporter.write_report(results, invalid_only)
