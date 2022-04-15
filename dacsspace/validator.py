@@ -21,6 +21,22 @@ class Validator:
             self.schema = json.load(json_file)
         self.validator.check_schema(self.schema)
 
+    def format_error(self, error):
+        """Formats validation error messages.
+
+        Args:
+            error (jsonschema.exceptions.ValidationError): a validation error
+            received from jsonschema.
+
+        Returns:
+            message (str): a string representation of the validation error.
+        """
+        if error.validator == "required":
+            return error.message
+        else:
+            schema_path = f"schema[{']['.join(repr(index) for index in error.schema_path)}]"
+            return f"Failed validating {error.validator!r} in {schema_path}: {error.schema}"
+
     def validate_data(self, data):
         """Validates data.
 
@@ -34,11 +50,8 @@ class Validator:
         """
         validator = self.validator(self.schema)
         errors_found = [
-            error.message for error in validator.iter_errors(data)]
-        print(errors_found)
-        for error in validator.iter_errors(data):
-            print(error.schema_path)
+            self.format_error(error) for error in validator.iter_errors(data)]
         if len(errors_found):
-            return {"valid": False, "explanation": (errors_found)}
+            return {"valid": False, "explanation": "\n".join(errors_found)}
         else:
             return {"valid": True}
