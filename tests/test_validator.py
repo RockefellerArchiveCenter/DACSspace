@@ -83,7 +83,7 @@ class TestValidator(unittest.TestCase):
 
         error.validator = "contains"
         error.schema = {}
-        error.schema_path = ("foo", "bar")
+        error.schema_path = ("biohist", "userestrict")
         self.assertEqual(
             validator.format_error(error),
-            "Failed validating 'contains' in schema['foo']['bar']: {}")
+            "Failed validating 'contains' in schema['biohist']['userestrict']: {}")
