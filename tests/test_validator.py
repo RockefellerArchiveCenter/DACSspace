@@ -36,21 +36,16 @@ class TestValidator(unittest.TestCase):
         # cleanup
         os.remove(test_schema_filepath)
 
-    def validate_files(self, fixture_dir, schema, valid):
+    def validate_files(self, fixtures, schema, valid):
         """Validates files.
 
         Args:
-            fixture_dir (pathlib.Path): a filepath for a directory containing
-                                        fixtures to be validated.
+            fixtures (list): filenames of fixtures to be validated.
             schema (str): a schema to validate against.
             valid (boolean): the expected outcome of the validation process.
         """
-        fixtures = [
-            f for f in fixture_dir.iterdir() if (
-                f.is_file() and str(
-                    f.name).endswith('json'))]
         for fixture in fixtures:
-            with open(fixture, 'r') as v:
+            with open(Path('fixtures', fixture), 'r') as v:
                 data = json.load(v)
                 result = Validator(schema, None).validate_data(data)
             self.assertTrue(isinstance(result, dict))
@@ -58,14 +53,19 @@ class TestValidator(unittest.TestCase):
 
     def test_single_level_required_schema(self):
         """Asserts that the single_level_required schema validates fixtures as expected."""
-        self.validate_files(Path("fixtures", "single_level_required", "valid"),
-                            'single_level_required',
-                            True)
-        self.validate_files(Path("fixtures", "single_level_required", "invalid"),
-                            'single_level_required',
-                            False)
+        VALID_FIXTURES = ['valid_resource.json']
+        INVALID_FIXTURES = ['invalid_resource.json', 'minimum_to_save.json',
+                            'no_accessrestrict.json', 'no_metadata_rights.json',
+                            'userestrict_only.json']
+        self.validate_files(VALID_FIXTURES, 'single_level_required', True)
+        self.validate_files(INVALID_FIXTURES, 'single_level_required', False)
 
     def test_rac_schema(self):
         """Asserts that the RAC schema validates fixtures as expected."""
-        self.validate_files(Path("fixtures", "rac", "valid"), 'rac', True)
-        self.validate_files(Path("fixtures", "rac", "invalid"), 'rac', False)
+        VALID_FIXTURES = ['valid_resource_rac.json']
+        INVALID_FIXTURES = ['invalid_resource.json', 'minimum_to_save.json',
+                            'no_accessrestrict.json', 'userestrict_only.json',
+                            'missing_acqinfo.json', 'missing_arrangement.json',
+                            'missing_bioghist.json', 'missing_userestrict.json']
+        self.validate_files(VALID_FIXTURES, 'rac', True)
+        self.validate_files(INVALID_FIXTURES, 'rac', False)
