@@ -8,25 +8,20 @@ from asnake.client.web_client import ASnakeAuthError
 
 from dacsspace.client import ArchivesSpaceClient, ASnakeConfigError
 
-CONFIG_FILEPATH = "dacsspace/local_settings.cfg"
+CONFIG_FILEPATH = "as_config.cfg"
 
 
 class ArchivesSpaceClientTests(unittest.TestCase):
     def setUp(self):
         """Move existing config file and replace with sample config."""
         if os.path.isfile(CONFIG_FILEPATH):
-            shutil.move(
-                CONFIG_FILEPATH,
-                "dacsspace/local_settings.old")
-        shutil.copy(
-            "dacsspace/local_settings.example",
-            CONFIG_FILEPATH)
+            shutil.move(CONFIG_FILEPATH, "as_config.old")
+        shutil.copy("as_config.example", CONFIG_FILEPATH)
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
     def test_config_file(self, mock_post, mock_get):
         """Asserts that configuration files are correctly handled:
-            - Missing configuration files cause an exception to be raised.
             - Configuration files without all the necessary values cause an exception to be raised.
             - Valid configuration file allows for successful instantiation of ArchivesSpaceClient class.
         """
@@ -37,7 +32,7 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         mock_get.return_value.text = "v3.0.2"
 
         # Valid config file
-        ArchivesSpaceClient()
+        ArchivesSpaceClient(CONFIG_FILEPATH)
 
         # remove baseurl from ArchivesSpace section
         config = configparser.ConfigParser()
@@ -48,7 +43,7 @@ class ArchivesSpaceClientTests(unittest.TestCase):
 
         # Configuration file missing necessary options
         with self.assertRaises(configparser.NoOptionError) as err:
-            ArchivesSpaceClient()
+            ArchivesSpaceClient(CONFIG_FILEPATH)
         self.assertEqual(str(err.exception),
                          "No option 'baseurl' in section: 'ArchivesSpace'")
 
@@ -61,17 +56,8 @@ class ArchivesSpaceClientTests(unittest.TestCase):
 
         # Configuration file missing necessary section
         with self.assertRaises(configparser.NoSectionError) as err:
-            ArchivesSpaceClient()
+            ArchivesSpaceClient(CONFIG_FILEPATH)
         self.assertEqual(str(err.exception), "No section: 'ArchivesSpace'")
-
-        # delete file
-        os.remove(CONFIG_FILEPATH)
-
-        # Missing configuration file
-        with self.assertRaises(IOError) as err:
-            ArchivesSpaceClient()
-        self.assertEqual(str(err.exception),
-                         "Could not find a configuration file at dacsspace/local_settings.cfg")
 
     @patch("requests.Session.get")
     @patch("requests.Session.post")
@@ -85,14 +71,14 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         # Incorrect authentication credentials
         mock_post.return_value.status_code = 403
         with self.assertRaises(ASnakeAuthError) as err:
-            ArchivesSpaceClient()
+            ArchivesSpaceClient(CONFIG_FILEPATH)
         self.assertEqual(str(err.exception),
                          "Failed to authorize ASnake with status: 403")
 
         # Incorrect base URL
         mock_post.return_value.status_code = 404
         with self.assertRaises(ASnakeAuthError) as err:
-            ArchivesSpaceClient()
+            ArchivesSpaceClient(CONFIG_FILEPATH)
         self.assertEqual(str(err.exception),
                          "Failed to authorize ASnake with status: 404")
 
@@ -104,7 +90,7 @@ class ArchivesSpaceClientTests(unittest.TestCase):
         mock_get.return_value.json.return_value = {
             'error': 'Repository not found'}
         with self.assertRaises(ASnakeConfigError) as err:
-            ArchivesSpaceClient()
+            ArchivesSpaceClient(CONFIG_FILEPATH)
         self.assertEqual(str(err.exception),
                          "Error getting repository: Repository not found")
 
@@ -114,7 +100,8 @@ class ArchivesSpaceClientTests(unittest.TestCase):
     def test_published_only(self, mock_authorize, mock_get, mock_search):
         """Asserts that the `published_only` flag is handled correctly."""
         mock_get.return_value.text = "v3.0.2"  # Allows ArchivesSpaceClient to instantiate
-        client = ArchivesSpaceClient()  # Instantiates ArchivesSpaceClient for testing
+        # Instantiates ArchivesSpaceClient for testing
+        client = ArchivesSpaceClient(CONFIG_FILEPATH)
 
         # Test search for only published resources
         list(client.get_resources(True))
@@ -134,7 +121,7 @@ class ArchivesSpaceClientTests(unittest.TestCase):
     def test_data(self, mock_authorize, mock_get, mock_search):
         """Asserts that individual resources are returned"""
         mock_get.return_value.text = "v3.0.2"
-        client = ArchivesSpaceClient()
+        client = ArchivesSpaceClient(CONFIG_FILEPATH)
 
         # create a mocked object which acts like an
         # `asnake.jsonmodel.JSONModel` object
@@ -149,7 +136,5 @@ class ArchivesSpaceClientTests(unittest.TestCase):
 
     def tearDown(self):
         """Replace sample config with existing config."""
-        if os.path.isfile("dacsspace/local_settings.old"):
-            shutil.move(
-                "dacsspace/local_settings.old",
-                CONFIG_FILEPATH)
+        if os.path.isfile("as_config.old"):
+            shutil.move("as_config.old", CONFIG_FILEPATH)
