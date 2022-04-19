@@ -1,4 +1,4 @@
-local_settings.cfg
+as_config.cfg
 log.txt
 *.csv
 *__pycache__
