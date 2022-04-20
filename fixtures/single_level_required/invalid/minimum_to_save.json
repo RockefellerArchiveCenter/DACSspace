@@ -1,0 +1,117 @@
+{
+    "lock_version": 0,
+    "title": "Single level minimum resource",
+    "publish": false,
+    "restrictions": false,
+    "created_by": "bgordon",
+    "last_modified_by": "bgordon",
+    "create_time": "2022-04-11T00:42:52Z",
+    "system_mtime": "2022-04-11T00:42:52Z",
+    "user_mtime": "2022-04-11T00:42:52Z",
+    "suppressed": false,
+    "is_slug_auto": false,
+    "id_0": "12345",
+    "level": "collection",
+    "finding_aid_language": "eng",
+    "finding_aid_script": "Latn",
+    "jsonmodel_type": "resource",
+    "external_ids": [
+
+    ],
+    "subjects": [
+
+    ],
+    "linked_events": [
+
+    ],
+    "extents": [
+        {
+            "lock_version": 0,
+            "number": "3",
+            "created_by": "bgordon",
+            "last_modified_by": "bgordon",
+            "create_time": "2022-04-11T00:42:52Z",
+            "system_mtime": "2022-04-11T00:42:52Z",
+            "user_mtime": "2022-04-11T00:42:52Z",
+            "portion": "whole",
+            "extent_type": "document box(es)",
+            "jsonmodel_type": "extent"
+        }
+    ],
+    "lang_materials": [
+        {
+            "lock_version": 0,
+            "created_by": "bgordon",
+            "last_modified_by": "bgordon",
+            "create_time": "2022-04-11T00:42:52Z",
+            "system_mtime": "2022-04-11T00:42:52Z",
+            "user_mtime": "2022-04-11T00:42:52Z",
+            "jsonmodel_type": "lang_material",
+            "notes": [
+
+            ],
+            "language_and_script": {
+                "lock_version": 0,
+                "created_by": "bgordon",
+                "last_modified_by": "bgordon",
+                "create_time": "2022-04-11T00:42:52Z",
+                "system_mtime": "2022-04-11T00:42:52Z",
+                "user_mtime": "2022-04-11T00:42:52Z",
+                "language": "eng",
+                "jsonmodel_type": "language_and_script"
+            }
+        }
+    ],
+    "dates": [
+        {
+            "lock_version": 0,
+            "begin": "1990",
+            "end": "1995",
+            "created_by": "bgordon",
+            "last_modified_by": "bgordon",
+            "create_time": "2022-04-11T00:42:52Z",
+            "system_mtime": "2022-04-11T00:42:52Z",
+            "user_mtime": "2022-04-11T00:42:52Z",
+            "date_type": "inclusive",
+            "label": "creation",
+            "jsonmodel_type": "date"
+        }
+    ],
+    "external_documents": [
+
+    ],
+    "rights_statements": [
+
+    ],
+    "linked_agents": [
+
+    ],
+    "revision_statements": [
+
+    ],
+    "instances": [
+
+    ],
+    "deaccessions": [
+
+    ],
+    "related_accessions": [
+
+    ],
+    "classifications": [
+
+    ],
+    "notes": [
+
+    ],
+    "metadata_rights_declarations": [
+
+    ],
+    "uri": "/repositories/2/resources/13287",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "tree": {
+        "ref": "/repositories/2/resources/13287/tree"
+    }
+}

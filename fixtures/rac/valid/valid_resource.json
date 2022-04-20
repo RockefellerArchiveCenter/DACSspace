@@ -1,0 +1,203 @@
+{
+    "lock_version": 26,
+    "title": "Rockefeller Foundation records",
+    "publish": true,
+    "restrictions": false,
+    "ead_id": "FA1619.xml",
+    "finding_aid_title": "A Guide to the Rockefeller Foundation records",
+    "finding_aid_filing_title": "Rockefeller Foundation records",
+    "created_by": "battalb",
+    "last_modified_by": "battalb",
+    "create_time": "2019-11-08T19:42:22Z",
+    "system_mtime": "2022-03-28T15:36:19Z",
+    "user_mtime": "2022-03-28T15:36:19Z",
+    "suppressed": false,
+    "is_slug_auto": false,
+    "id_0": "FA1619",
+    "level": "collection",
+    "finding_aid_language": "eng",
+    "finding_aid_script": "Latn",
+    "jsonmodel_type": "resource",
+    "external_ids": [],
+    "subjects": [],
+    "linked_events": [],
+    "extents": [
+        {
+            "lock_version": 0,
+            "number": "5408.47",
+            "container_summary": "Including paper records, digital media, and 1764 microfilm reels of open records.",
+            "created_by": "battalb",
+            "last_modified_by": "battalb",
+            "create_time": "2022-03-28T15:36:19Z",
+            "system_mtime": "2022-03-28T15:36:19Z",
+            "user_mtime": "2022-03-28T15:36:19Z",
+            "portion": "whole",
+            "extent_type": "Cubic Feet",
+            "jsonmodel_type": "extent"
+        }
+    ],
+    "lang_materials": [
+        {
+            "lock_version": 0,
+            "created_by": "battalb",
+            "last_modified_by": "battalb",
+            "create_time": "2022-03-28T15:36:19Z",
+            "system_mtime": "2022-03-28T15:36:19Z",
+            "user_mtime": "2022-03-28T15:36:19Z",
+            "jsonmodel_type": "lang_material",
+            "notes": [],
+            "language_and_script": {
+                "lock_version": 0,
+                "created_by": "battalb",
+                "last_modified_by": "battalb",
+                "create_time": "2022-03-28T15:36:19Z",
+                "system_mtime": "2022-03-28T15:36:19Z",
+                "user_mtime": "2022-03-28T15:36:19Z",
+                "language": "eng",
+                "jsonmodel_type": "language_and_script"
+            }
+        }
+    ],
+    "dates": [
+        {
+            "lock_version": 0,
+            "expression": "1910-2001",
+            "begin": "1910",
+            "end": "2001",
+            "created_by": "battalb",
+            "last_modified_by": "battalb",
+            "create_time": "2022-03-28T15:36:19Z",
+            "system_mtime": "2022-03-28T15:36:19Z",
+            "user_mtime": "2022-03-28T15:36:19Z",
+            "date_type": "inclusive",
+            "label": "creation",
+            "jsonmodel_type": "date"
+        },
+        {
+            "lock_version": 0,
+            "expression": "1924-1990",
+            "begin": "1924",
+            "end": "1990",
+            "created_by": "battalb",
+            "last_modified_by": "battalb",
+            "create_time": "2022-03-28T15:36:19Z",
+            "system_mtime": "2022-03-28T15:36:19Z",
+            "user_mtime": "2022-03-28T15:36:19Z",
+            "date_type": "bulk",
+            "label": "creation",
+            "jsonmodel_type": "date"
+        }
+    ],
+    "external_documents": [],
+    "rights_statements": [],
+    "linked_agents": [
+        {
+            "role": "creator",
+            "relator": "aut",
+            "terms": [],
+            "ref": "/agents/corporate_entities/4884"
+        }
+    ],
+    "revision_statements": [],
+    "instances": [],
+    "deaccessions": [],
+    "related_accessions": [],
+    "classifications": [],
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "ac727babb59922bc7ee3d9d634e5147d",
+            "type": "accessrestrict",
+            "rights_restriction": {
+                "local_access_restriction_type": []
+            },
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "Records more than 20 years old are open for research with select materials restricted as noted. Brittle or damaged items are available at the discretion of RAC. Researchers interested in accessing digital media (floppy disks, CDs, DVDs, etc.) or audiovisual material (audio cassettes, VHS, etc.) in this collection must use an access surrogate. The original items may not be accessed because of preservation concerns. To request an access surrogate be made, or if you are unsure if there is an access surrogate, please contact an RAC archivist.\n",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "f76c1d115e0ccf1785f0de273b06b00b",
+            "type": "bioghist",
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "The Rockefeller Foundation was established by act of the New York State Legislature approved by the Governor on May 14, 1913, \"to promote the well-being of mankind throughout the world.\" Between 1913 and 1928 the China Medical Board, the International Health Board, and the Division of Medical Education functioned as divisions of the Foundation, concentrating on the administration of programs in public health and medical education. A Division of Studies was created in 1923 to handle projects outside the medical field. These early years were experimental as the new foundation studied the methods of philanthropy and explored its relationships with other Rockefeller boards.\n\nAlthough the Rockefeller Foundation is the largest and best known philanthropy founded by the Rockefeller family, it was neither the first nor the last to be established. The Rockefeller Institute for Medical Research (1901), the General Education Board (1902), the Rockefeller Sanitary Commission for the Eradication of Hookworm Disease (1909), and the Bureau of Social Hygiene (1911) all existed earlier. When the Foundation was created, the Sanitary Commission was disbanded. After the establishment of the Foundation, the Laura Spelman Rockefeller Memorial (1918) and the International Education Board (1923) were created.\n\nThe Rockefeller boards and their programs were reconsidered and reorganized in 1927-1928 in order to avoid overlapping programs. The International Health Board of the Foundation was disbanded and an International Health Division was organized. The China Medical Board, Inc., was established as a separately incorporated institution, and the China Medical Board of the Foundation ceased to exist. The Division of Studies was dropped and the Division of Medical Education was phased out. The Laura Spelman Rockefeller Memorial was combined with the Foundation and the Spelman Fund of New York was chartered to continue activities of the LSRM that were not absorbed by the Foundation. The International Education Board was disbanded.\n\nAs a result of this reorganization, the Foundation adopted a program which included public health work (administered by the IHD), the advancement of knowledge in the medical and natural sciences (in part taken over from the IEB), the social sciences (formerly the field of the LSRM), and the humanities and arts (shared with the GEB). The Rockefeller Institute and the Bureau of Social Hygiene were not affected by the reorganization. The program adopted by the Foundation at this time remained basically the same for the next twenty years.\n\nAs its files accumulated, the Foundation maintained a card index recording the names of institutional and individual grantees and correspondents. A microfilm copy of this index is available at the Archive Center.\n\n",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "e2ce2f82d88a4c744ac548e992b2c2ca",
+            "type": "arrangement",
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "Arrangement is original based on a file structure created by the records management staff of the Rockefeller Foundation.\n\nThe main body of the Rockefeller Foundation records is organized into 21 record groups by file type. The record groups that contain high volumes of material are further subdivided into sub groups. These sub groups are then arranged in series (primarily by country/geographic area), and subseries (primarily alphabetically, with each assigned letter signifying a subject/program). \nIn addition to this record group structure, the RF records also consist of several special collections.\n",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "8bec032d11d1b9991dcd241d8f3ef836",
+            "type": "scopecontent",
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "The collection comprehensively documents the philanthropic activities of the Rockefeller Foundation through available records in the areas of projects (grants), fellowships, general correspondence, administration, program and policy, board minutes and officers' actions, China Medical Board records, the International Health Board/Division (IHB/IHD), the activities of a variety of the Foundation's field offices, as well as officers' diaries, oral histories, and associated photographs and audiovisual materials.",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "52e95d864bebffc53f3becd501c192a0",
+            "type": "userestrict",
+            "rights_restriction": {
+                "local_access_restriction_type": []
+            },
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "Rockefeller Foundation has title, copyright, and literary rights in the collection, in so far as it holds them. Rockefeller Archive Center has authority to grant permission to cite and publish archival material from the collection.",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "52e95d864bebffc53f3becd501c192a1",
+            "type": "acqinfo",
+            "rights_restriction": {
+                "local_access_restriction_type": []
+            },
+            "subnotes": [
+                {
+                    "jsonmodel_type": "note_text",
+                    "content": "Rockefeller Foundation.",
+                    "publish": true
+                }
+            ],
+            "publish": true
+        }
+    ],
+    "metadata_rights_declarations": [],
+    "uri": "/repositories/2/resources/13058",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "tree": {
+        "ref": "/repositories/2/resources/13058/tree"
+    }
+}

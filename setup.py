@@ -14,6 +14,9 @@ setup(
     version="0.1.0",
     license='MIT',
     packages=find_packages(),
+    entry_points={
+        'console_scripts': ['dacsspace=dacsspace.command_line:main'],
+    },
     zip_safe=False,
     classifiers=[
         'Programming Language :: Python :: 3',
@@ -22,6 +25,7 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
+        "jsonschema",
         "requests",
     ],
 )

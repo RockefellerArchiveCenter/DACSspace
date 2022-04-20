@@ -15,23 +15,13 @@ class DACSspace:
         if re.search(r'[*?:"<>|]', csv_filepath):
             raise ValueError(
                 'File name cannot contain the following characters: * ? : " < > | ')
+        self.csv_filepath = csv_filepath
 
     def run(self, published_only, invalid_only,
-            schema_identifier='single_level_required.json', schema_filepath=None):
+            schema_identifier, schema_filepath):
         client = ArchivesSpaceClient()
         validator = Validator(schema_identifier, schema_filepath)
-        reporter = CSVReporter()
+        reporter = CSVReporter(self.csv_filepath)
         data = client.get_resources(published_only)
-        results = []
-        for obj in data:
-            result = validator.validate(obj)
-            results.append(result)
+        results = [validator.validate_data(obj) for obj in data]
         reporter.write_report(results, invalid_only)
-
-
-# These variables should eventually be passed as arguments in the command line
-# published_only = False
-# invalid_only = True
-# schema_identifier - should default to single_level_required.json
-# schema_filepath - should default to None, only one of schema_identifier
-# or schema_filepath allowed
