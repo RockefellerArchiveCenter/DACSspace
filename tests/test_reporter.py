@@ -13,8 +13,8 @@ class CSVReporterTest(TestCase):
         Checks if test file exists, then deletes it.
         """
         self.filename = "DACSSpace_results"
-        self.results = [{"valid": True, "explanation": None},
-                        {"valid": False, "explanation": "No title"}]
+        self.results = [{"valid": True, "error count": 0, "explanation": None},
+                        {"valid": False, "error count": 1, "explanation": "No title"}]
         if os.path.isfile(self.filename):
             os.remove(self.filename)
 
@@ -35,7 +35,7 @@ class CSVReporterTest(TestCase):
         """Mocks writing only invalid results and valid results to file."""
         CSVReporter(self.filename).write_report(self.results)
         mock_writerows.assert_called_with(
-            [{"valid": False, "explanation": "No title"}])
+            [{"valid": False, "error count": 1, "explanation": "No title"}])
         CSVReporter(
             self.filename).write_report(
             self.results,
