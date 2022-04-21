@@ -12,6 +12,11 @@ def main():
         help='Filepath for results report (CSV format)',
         type=str)
     parser.add_argument(
+        '--as_config',
+        help='Filepath for ArchivesSpace configuration file',
+        typ=str,
+        default='as_config.cfg')
+    parser.add_argument(
         '--published_only',
         help='Fetches only published records from AS',
         action='store_true')
@@ -32,7 +37,7 @@ def main():
         default=None)
     args = parser.parse_args()
 
-    DACSspace(args.csv_filepath).run(
+    DACSspace(args.as_config, args.csv_filepath).run(
         args.published_only,
         args.invalid_only,
         args.schema_identifier,
