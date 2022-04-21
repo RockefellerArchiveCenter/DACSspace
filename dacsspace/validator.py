@@ -35,7 +35,7 @@ class Validator:
             return error.message
         else:
             schema_path = f"schema[{']['.join(repr(index) for index in error.schema_path)}]"
-            return f"Failed validating {error.validator!r} in {schema_path}: {error.schema}"
+            return f"Failed validating {repr(error.validator)} in {schema_path}: {error.schema}"
 
     def validate_data(self, data):
         """Validates data.
