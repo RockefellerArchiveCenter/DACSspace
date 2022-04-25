@@ -45,16 +45,17 @@ class Validator:
 
         Returns:
            result (dict): The result of the validation. An dictionary with the
-           object's URI, a boolean indication of the validation result and, if
+           object's URI, a boolean indication of the validation result, an integer representation of the number of validation errors, and, if
            necessary, an explanation of any validation errors.
 
-           { "uri": "/repositories/2/resources/1234", "valid": False, "explanation": "You are missing the following fields..." }
+           { "uri": "/repositories/2/resources/1234", "valid": False, "error_count": 1, "explanation": "You are missing the following fields..." }
         """
         validator = self.validator(self.schema)
         errors_found = [
             self.format_error(error) for error in validator.iter_errors(data)]
         if len(errors_found):
-            return {"uri": data["uri"], "valid": False,
+            return {"uri": data["uri"], "valid": False, "error_count": len(errors_found),
                     "explanation": "\n".join(errors_found)}
         else:
-            return {"uri": data["uri"], "valid": True}
+            return {"uri": data["uri"], "valid": True,
+                    "error_count": 0, "explanation": None}

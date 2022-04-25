@@ -50,6 +50,8 @@ class TestValidator(unittest.TestCase):
                 result = Validator(schema, None).validate_data(data)
             self.assertTrue(isinstance(result, dict))
             self.assertEqual(result["valid"], valid, result)
+            self.assertTrue(len(result.keys()) == 4)
+            self.assertTrue(isinstance(result["error_count"], int))
 
     def test_single_level_required_schema(self):
         """Asserts that the single_level_required schema validates fixtures as expected."""
