@@ -3,7 +3,7 @@ import os
 import unittest
 from pathlib import Path
 
-from jsonschema.exceptions import SchemaError
+from jsonschema.exceptions import SchemaError, ValidationError
 
 from dacsspace.validator import Validator
 
@@ -69,3 +69,18 @@ class TestValidator(unittest.TestCase):
                             'missing_bioghist.json', 'missing_userestrict.json']
         self.validate_files(VALID_FIXTURES, 'rac', True)
         self.validate_files(INVALID_FIXTURES, 'rac', False)
+
+    def test_format_error(self):
+        """Asserts that error messages are formatted as expected."""
+        validator = Validator('single_level_required', None)
+        error = ValidationError("test error message")
+
+        error.validator = "required"
+        self.assertEqual(validator.format_error(error), "test error message")
+
+        error.validator = "contains"
+        error.schema = {}
+        error.schema_path = ("biohist", "userestrict")
+        self.assertEqual(
+            validator.format_error(error),
+            "Failed validating 'contains' in schema['biohist']['userestrict']: {}")

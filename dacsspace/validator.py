@@ -21,6 +21,22 @@ class Validator:
             self.schema = json.load(json_file)
         self.validator.check_schema(self.schema)
 
+    def format_error(self, error):
+        """Formats validation error messages.
+
+        Args:
+            error (jsonschema.exceptions.ValidationError): a validation error
+            received from jsonschema.
+
+        Returns:
+            message (str): a string representation of the validation error.
+        """
+        if error.validator == "required":
+            return error.message
+        else:
+            schema_path = f"schema[{']['.join(repr(index) for index in error.schema_path)}]"
+            return f"Failed validating {repr(error.validator)} in {schema_path}: {error.schema}"
+
     def validate_data(self, data):
         """Validates data.
 
@@ -35,7 +51,8 @@ class Validator:
            { "uri": "/repositories/2/resources/1234", "valid": False, "explanation": "You are missing the following fields..." }
         """
         validator = self.validator(self.schema)
-        errors_found = [error.message for error in validator.iter_errors(data)]
+        errors_found = [
+            self.format_error(error) for error in validator.iter_errors(data)]
         if len(errors_found):
             return {"uri": data["uri"], "valid": False,
                     "explanation": "\n".join(errors_found)}
