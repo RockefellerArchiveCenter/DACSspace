@@ -23,7 +23,7 @@ class CSVReporter:
             fieldnames = [
                 "uri",
                 "valid",
-                "error count",
+                "error_count",
                 "explanation"]
             writer = csv.DictWriter(
                 f, fieldnames=fieldnames)
