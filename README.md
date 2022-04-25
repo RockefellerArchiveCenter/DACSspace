@@ -24,29 +24,23 @@ Download and install [Python](https://www.python.org/downloads/)
 
 * If you are using Windows, add Python to your [PATH variable](https://docs.python.org/2/using/windows.html)
 
-Download or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository 
+Download or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
 
 Install requirements from within the main DACSspace directory: ```pip install -r requirements.txt```
 
 ## Setup
 
-Run `setup.py` to create a configuration file named `local_settings.cfg` which will allow you to connect to your ArchivesSpace instance. You will need:
-* BaseURL of your ArchivesSpace instance
-* Repository ID for your ArchivesSpace installation
-* ArchivesSpace username and password
+Create a file to hold your ArchivesSpace credentials. This file should contain:
+* The base URL of your ArchivesSpace instance
+* A Repository ID for your ArchivesSpace installation
+* An ArchivesSpace username and associated password
 
-Your configuration file will look something like this:
-```
-[ArchivesSpace]
-baseURL: #BaseURL of your ArchivesSpace instance
-repository: #Repository ID of your ArchivesSpace installation
-user: #ArchivesSpace username
-password: #ArchivesSpace password for the username used above
+The easiest way to do this is to rename `as_config.example` to `as_config.cfg`
+and update it with your values.
 
-[Destinations]
-directory: #Directory where you would like to save the csv file
-filename: dacs_singlelevel_report.csv
-```
+By default, DACSspace expects this file to be named `as_config.cfg`, but you can
+pass a different filepath via the `as_config` command-line argument.  
+
 
 ## Usage
 
