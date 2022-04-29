@@ -11,7 +11,12 @@ class DACSspace:
     """Base DACSspace class. Fetches data from AS, validates and reports results."""
 
     def __init__(self, as_config, csv_filepath):
-        """Checks CSV and AS config filepaths."""
+        """Checks CSV and AS config filepaths.
+
+        Args:
+            as_config (str): filepath to ArchivesSpace configuration file.
+            csv_filepath (str): filepath at which to save results file.
+        """
         if not csv_filepath.endswith(".csv"):
             raise ValueError("File must have .csv extension")
         if re.search(r'[*?:"<>|]', csv_filepath):
