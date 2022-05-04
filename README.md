@@ -72,7 +72,13 @@ If you are using Microsoft Excel to view the csv file, consult the following lin
 
 ## Contributing
 
-Pull requests accepted!
+Found a bug? [File an issue.](https://github.com/RockefellerArchiveCenter/DACSspace/issues/new/choose)
+
+Pull requests accepted! To contribute:
+
+1. File an issue in the repository or work on an issue already documented
+2. Fork the repository and create a new branch for your work
+3. After you have completed your work, push your branch back to the repository and open a pull request
 
 ## Authors
 
