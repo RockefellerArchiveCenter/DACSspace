@@ -26,7 +26,7 @@ Download and install [Python](https://www.python.org/downloads/)
 
 Download or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
 
-Install requirements from within the main DACSspace directory: ```pip install -r requirements.txt```
+Install DACSspace and its requirements: ```pip install dacsspace```
 
 ## Setup
 
