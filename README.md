@@ -44,31 +44,21 @@ pass a different filepath via the `as_config` command-line argument.
 
 ## Usage
 
-Using the command line navigate to the directory containing the DACSspace repository and run `single-level.py` to execute the script.
+Using the command line, navigate to the directory containing the DACSspace repository and run `dacsspace.py` to execute the script.
 
-DACSspace will prompt you to answer two questions allowing you to limit which resources you'd like the script to evaluate:
+DACSspace will check your ArchivesSpace and CSV filepaths. Your CSV filepath must have a .csv file extension and cannot contain the following characters: * ? : " < > | '
 
-```
-Welcome to DACSspace!
-I'll ask you a series of questions to refine how to script works.
-If you want to use the default value for a question press the ENTER key.
+The DACSspace client will handle communication with your ArchivesSpace repository and gets the data from the resources in your AS repository. The client will only fetch data from published resources.
 
-Do you want DACSspace to include unpublished resources? y/n (default is n):
-Do you want to further limit the script by a specific resource id? If so, enter a string that must be present in the resource id (enter to skip):
-```
+The DACSspace validator will then validate the data that was fetched against a JSON schema. The default schema is the single_level_required JSON schema. If you want to use a different schema, use the command line argument `--schema_identifier` for a schema that is part of the DACSspace `schemas` directory or use `--schema_filepath` for a schema that is external to DACSspace.
 
-Pressing the ENTER key for both questions will use the default version of the script which will get ALL resources.
+From the data fetched from ArchivesSpace by the client, the validator will return the result which is a dictionary including the object's URI (ex. /repositories/2/resources/1234), a boolean indication of the validation result (True or False), an integer representation of the number of validation errors (ex. 1), and if necessary, an explanation of any validation errors (You are missing the following fields ...).
 
-The script will create a list of evaluated resources in a csv file (default is `dacs_singlelevel_report.csv`).
+The DACSspace reporter will then write the results produced by the validator to a CSV file. The reporter will return a list of dictionaries containing information about the validation results. The reporter will only write invalid results to the CSV file.
 
-A sample csv file will look like this:
+The field names for the CSV file are taken from the result returned by the validator: uri, valid, error_count, and explanation.
 
-| title | publish | resource | extent | date| language | repository | creator | scope | restrictions
-|---|---|---|---|---|---|---|---|---|---|
-| #resource title | TRUE | #resourceId | 20.8 | inclusive|  eng   | #NameofRepository | FALSE | #scopenote| #accessrestriction
-| #resource title | TRUE | #resourceId | 50.6 | single   |  FALSE | #NameofRepository | #creator | FALSE| FALSE
-
-If you are using Microsoft Excel to view the csv file, consult the following links to avoid encoding issues: [Excel 2007](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0), [Excel 2013](https://www.itg.ias.edu/node/985).
+If you are using Microsoft Excel to view the CSV file, consult the following links to avoid encoding issues: [Excel 2007](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0), [Excel 2013](https://www.ias.edu/itg/how-import-csv-file-uses-utf-8-character-encoding).
 
 ## Contributing
 
