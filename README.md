@@ -76,7 +76,9 @@ Pull requests accepted!
 
 ## Authors
 
-Hillel Arnold and Amy Berish
+Inital version: Hillel Arnold and Amy Berish.
+
+Version 2.0: Hillel Arnold, Amy Berish, Bonnie Gordon, Katie Martin, and Darren Young.
 
 ## License
 
