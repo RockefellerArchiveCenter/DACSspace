@@ -1,3 +1,4 @@
+import configparser
 import os
 import shutil
 from unittest import TestCase
@@ -32,7 +33,39 @@ class TestDACSspace(TestCase):
                          "File must have .csv extension")
 
     def test_as_config(self):
-        """Asserts missing files raise an exception."""
+        """Asserts that ArchivesSpace configuration file is correctly handled:
+            - Configuration files without all the necessary values cause an exception to be raised.
+            - Valid configuration file allows for successful instantiation of DACSspace class.
+            - Missing configuration file raises exception.
+        """
+        DACSspace(CONFIG_FILEPATH, "csv_filepath.csv")
+
+        # remove baseurl from ArchivesSpace section
+        config = configparser.ConfigParser()
+        config.read(CONFIG_FILEPATH)
+        config.remove_option('ArchivesSpace', 'baseurl')
+        with open(CONFIG_FILEPATH, "w") as cf:
+            config.write(cf)
+
+        # Configuration file missing necessary options
+        with self.assertRaises(configparser.NoOptionError) as err:
+            DACSspace(CONFIG_FILEPATH, "csv_filepath.csv")
+        self.assertEqual(str(err.exception),
+                         "No option 'baseurl' in section: 'ArchivesSpace'")
+
+        # remove ArchivesSpace section
+        config = configparser.ConfigParser()
+        config.read(CONFIG_FILEPATH)
+        config.remove_section('ArchivesSpace')
+        with open(CONFIG_FILEPATH, "w") as cf:
+            config.write(cf)
+
+        # Configuration file missing necessary section
+        with self.assertRaises(configparser.NoSectionError) as err:
+            DACSspace(CONFIG_FILEPATH, "csv_filepath.csv")
+        self.assertEqual(str(err.exception), "No section: 'ArchivesSpace'")
+
+        # missing configuration file
         os.remove(CONFIG_FILEPATH)
         with self.assertRaises(IOError) as err:
             DACSspace(CONFIG_FILEPATH, "csv_filepath.csv")
