@@ -26,8 +26,6 @@ Download and install [Python](https://www.python.org/downloads/)
 
 * If you are using Windows, add Python to your [PATH variable](https://docs.python.org/2/using/windows.html)
 
-Download or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
-
 Install DACSspace and its requirements: ```pip install dacsspace```
 
 ## Setup
