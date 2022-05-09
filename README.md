@@ -44,21 +44,36 @@ pass a different filepath via the `as_config` command-line argument.
 
 ## Usage
 
-Using the command line, navigate to the directory containing the DACSspace repository and run `dacsspace.py` to execute the script.
+DACSspace can be used as a command line utility to evaluate your ArchivesSpace repository for DACS compliance, and it can also be used as part of another Python program.
 
-DACSspace will check your ArchivesSpace and CSV filepaths. Your CSV filepath must have a .csv file extension and cannot contain the following characters: * ? : " < > | '
+### Running DACSspace from the command line
 
-The DACSspace client will handle communication with your ArchivesSpace repository and gets the data from the resources in your AS repository. The client will only fetch data from published resources.
+In the command line, run `dacsspace`. You will need to pass in different arguments to decide what data DACSspace will fetch, what data it will report out on, and what schema it will validate the data against.
 
-The DACSspace validator will then validate the data that was fetched against a JSON schema. The default schema is the single_level_required JSON schema. If you want to use a different schema, use the command line argument `--schema_identifier` for a schema that is part of the DACSspace `schemas` directory or use `--schema_filepath` for a schema that is external to DACSspace.
+#### What data to fetch
 
-From the data fetched from ArchivesSpace by the client, the validator will return the result which is a dictionary including the object's URI (ex. /repositories/2/resources/1234), a boolean indication of the validation result (True or False), an integer representation of the number of validation errors (ex. 1), and if necessary, an explanation of any validation errors (You are missing the following fields ...).
+If you plan to only evaluate DACS compliance on resources in your ArchivesSpace repository that are published, pass in the argument `--published_only` into the command line. This tells the DACSspace client class to only fetch data from published resources.
 
-The DACSspace reporter will then write the results produced by the validator to a CSV file. The reporter will return a list of dictionaries containing information about the validation results. The reporter will only write invalid results to the CSV file.
+#### What data to report on
 
-The field names for the CSV file are taken from the result returned by the validator: uri, valid, error_count, and explanation.
+If you want to limit your CSV file to contain information on resources that do not meet DACS compliance, pass in the argument `--invalid_only` into the command line. This tells the DACSspace reporter class to only write information on invalid results of the validation to your CSV file.
+
+The output to your CSV will include the following field names:
+- uri: The ArchivesSpace object's unique identifier (ex. /repositories/2/resources/1234)
+- valid: A boolean indication of the validation result (True or False)
+- error_count: An integer representation of the number of validation errors (ex. 1)
+- explanation: An explanation of any validation errors (You are missing the following fields ...)
 
 If you are using Microsoft Excel to view the CSV file, consult the following links to avoid encoding issues: [Excel 2007](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0), [Excel 2013](https://www.ias.edu/itg/how-import-csv-file-uses-utf-8-character-encoding).
+
+#### What schema to validate your data against
+
+The default JSON schema that DACSspace will run the data it fetches from your ArchivesSpace repository against is the single_level_required JSON schema. If you want to validate your data against a different schema, you have two options:
+
+1. To run DACSspace against a schema other than single_level_required within the `schemas` directory in dacsspace, use the command line argument `--schema_identifier` and specify the identifier for that schema. The identifier must be entered in as a string.
+2. To run DACSspace against a schema that is external to dacsspace, use the command line argument `schema_filepath` and specify the filepath to this external schema. The filepath must be entered in as a string.
+
+### Using DACSspace in another Python program
 
 ## Contributing
 
