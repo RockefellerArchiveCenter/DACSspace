@@ -46,9 +46,24 @@ pass a different filepath via the `as_config` command-line argument.
 
 DACSspace can be used as a command line utility to evaluate your ArchivesSpace repository for DACS compliance, and it can also be used as part of another Python program.
 
+Required arguments:
+- `csv_filepath`
+
+Use this argument to set the filepath to the CSV file where the output of DACSspace will print. Your CSV filepath must have a .csv extension and cannot contain the following characters: * ? : " < > | '
+
+Optional arguments:
+- `--published_only`
+- `--invalid_only`
+- `--schema_identifier`
+- `--schema_filepath`
+
+For use cases on how these optional arguments can be employed, look under the next section, Running DACSspace from the command line.
+
 ### Running DACSspace from the command line
 
-In the command line, run `dacsspace`. You will need to pass in different arguments to decide what data DACSspace will fetch, what data it will report out on, and what schema it will validate the data against.
+In the command line, run `dacsspace`. You also need to pass in the `csv_filepath` argument with the name of your CSV filepath in order to run the script (see [above]((https://github.com/RockefellerArchiveCenter/DACSspace#usage))).
+
+You can use the different DACSspace optional arguments to decide what data DACSspace will fetch, what data it will report out on, and what schema it will validate the data against.
 
 #### What data to fetch
 
