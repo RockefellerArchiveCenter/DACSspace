@@ -1,8 +1,10 @@
 # DACSspace
 
-A simple Python script to evaluate your ArchivesSpace instance for DACS [single-level minimum](http://www2.archivists.org/standards/DACS/part_I/chapter_1) required elements.
+A Python package to evaluate your ArchivesSpace instance for DACS [single-level required](https://saa-ts-dacs.github.io/dacs/06_part_I/02_chapter_01.html#single-level-required) elements.
 
-DACSspace utilizes the ArchivesSpace API to check resources for DACS compliance and produces a csv containing a list of evaluated resources. If a DACS field is present its content will be written to the csv, if a field is missing the csv will read "FALSE" for that item.
+DACSspace utilizes the ArchivesSpace API and a default JSON schema to validate resources. The output is a CSV containing a list of invalid URIs with the following fields: validation status, error count, and explanation.
+
+DACSspace also allows users to specify a schema to validate against other than the default DACS single-level required schema, see [Usage](https://github.com/RockefellerArchiveCenter/DACSspace#usage) section for more information.
 
 ## Requirements
 
@@ -24,9 +26,7 @@ Download and install [Python](https://www.python.org/downloads/)
 
 * If you are using Windows, add Python to your [PATH variable](https://docs.python.org/2/using/windows.html)
 
-Download or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
-
-Install requirements from within the main DACSspace directory: ```pip install -r requirements.txt```
+Install DACSspace and its requirements: ```pip install dacsspace```
 
 ## Setup
 
@@ -82,7 +82,9 @@ Pull requests accepted! To contribute:
 
 ## Authors
 
-Hillel Arnold and Amy Berish
+Initial version: Hillel Arnold and Amy Berish.
+
+Version 2.0: Hillel Arnold, Amy Berish, Bonnie Gordon, Katie Martin, and Darren Young.
 
 ## License
 

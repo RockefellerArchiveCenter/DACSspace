@@ -1,5 +1,3 @@
-from configparser import ConfigParser
-
 from asnake.aspace import ASpace
 
 
@@ -10,14 +8,12 @@ class ASnakeConfigError(Exception):
 class ArchivesSpaceClient:
     """Handles communication with ArchivesSpace."""
 
-    def __init__(self, as_config):
-        config = ConfigParser()
-        config.read(as_config)
-        self.aspace = ASpace(baseurl=config.get('ArchivesSpace', 'baseurl'),
-                             username=config.get('ArchivesSpace', 'user'),
-                             password=config.get('ArchivesSpace', 'password'))
-        self.repo = self.aspace.repositories(
-            config.get('ArchivesSpace', 'repository'))
+    def __init__(self, baseurl, username, password, repo_id):
+        self.aspace = ASpace(
+            baseurl=baseurl,
+            username=username,
+            password=password)
+        self.repo = self.aspace.repositories(repo_id)
         if isinstance(self.repo, dict):
             raise ASnakeConfigError(
                 "Error getting repository: {}".format(
