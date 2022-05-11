@@ -12,13 +12,6 @@ DACSspace also allows users to specify a schema to validate against other than t
 *   [ArchivesSnake](https://github.com/archivesspace-labs/ArchivesSnake) (Python library) (0.9.1 or higher)
 *   Requests module
 *   JSONschema
-*   [tox](https://tox.readthedocs.io/) (for running tests)
-*   [pre-commit](https://pre-commit.com/) (for running linters before committing)
-    *   After locally installing pre-commit, install the git-hook scripts in the DACSSpace directory:
-
-    ```
-    pre-commit install
-    ```  
 
 ## Installation
 
@@ -79,6 +72,32 @@ Pull requests accepted! To contribute:
 1. File an issue in the repository or work on an issue already documented
 2. Fork the repository and create a new branch for your work
 3. After you have completed your work, push your branch back to the repository and open a pull request
+
+### Contribution standards
+
+#### Style
+
+DACSspace uses the Python PEP8 community style guidelines. To conform to these guidelines, the following linters are part of the pre-commit:
+
+* autopep8 formats the code automatically
+* flake8 checks for style problems as well as errors and complexity
+* isort sorts imports alphabetically, and automatically separated into sections and by type
+
+After locally installing pre-commit, install the git-hook scripts in the DACSSpace directory:
+
+    ```
+    pre-commit install
+    ```  
+
+#### Documentation
+
+Docstrings should explain what a module, class, or function does by explaining its syntax and the semantics of its components. They focus on specific elements of the code, and less on how the code works. The point of docstrings is to provide information about the code you have written; what it does, any exceptions it raises, what it returns, relevant details about the parameters, and any assumptions which might not be obvious. Docstrings should describe a small segment of code and not the way the code is implemented in a larger environment.
+
+DACSspace adheres to [Google’s docstring style guide](https://google.github.io/styleguide/pyguide.html#381-docstrings). There are two types of docstrings: one-liners and multi-line docstrings. A one-line docstring may be perfectly appropriate for obvious cases where the code is immediately self-explanatory. Use multiline docstrings for all other cases.
+
+#### Tests
+
+New code should  have unit tests. Tests are written in unittest style and run using [tox](https://tox.readthedocs.io/). 
 
 ## Authors
 
