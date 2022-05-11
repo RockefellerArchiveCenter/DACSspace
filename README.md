@@ -90,6 +90,16 @@ The default JSON schema that DACSspace will run the data it fetches from your Ar
 
 ### Using DACSspace in another Python program
 
+Different components of the DACSspace package can be incorporated into other Python programs.
+
+For example, say you had a set of data that has already been exported from ArchivesSpace into another sort of container. You do not need to run the entire DACSspace package, but you do want to validate your data set against a JSON schema. To do this, add this code to your script:
+
+`from dacsspace.validator import Validator
+
+as_data = {"title": "Archival object" ... }
+result = Validator("single_level_required.json", None)
+print(result)`
+
 ## Contributing
 
 Pull requests accepted!
