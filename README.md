@@ -96,9 +96,10 @@ For example, say you had a set of data that has already been exported from Archi
 
 `from dacsspace.validator import Validator
 
-as_data = {"title": "Archival object" ... }
-result = Validator("single_level_required.json", None)
-print(result)`
+exported_data = [{"title": "Archival object" ... }, { ...}]
+validator = Validator("single_level_required.json", None)
+results = [validator.validate_data(obj) for obj in exported_data]
+print(results)`
 
 ## Contributing
 
