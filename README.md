@@ -37,31 +37,62 @@ pass a different filepath via the `as_config` command-line argument.
 
 ## Usage
 
-Using the command line navigate to the directory containing the DACSspace repository and run `single-level.py` to execute the script.
+DACSspace can be used as a command line utility to evaluate your ArchivesSpace repository for DACS compliance, and it can also be used as part of another Python program.
 
-DACSspace will prompt you to answer two questions allowing you to limit which resources you'd like the script to evaluate:
+Required arguments:
+- `csv_filepath`
 
-```
-Welcome to DACSspace!
-I'll ask you a series of questions to refine how to script works.
-If you want to use the default value for a question press the ENTER key.
+Use this argument to set the filepath to the CSV file where the output of DACSspace will print. Your CSV filepath must have a .csv extension and cannot contain the following characters: * ? : " < > | '
 
-Do you want DACSspace to include unpublished resources? y/n (default is n):
-Do you want to further limit the script by a specific resource id? If so, enter a string that must be present in the resource id (enter to skip):
-```
+Optional arguments:
+- `--published_only`
+- `--invalid_only`
+- `--schema_identifier`
+- `--schema_filepath`
 
-Pressing the ENTER key for both questions will use the default version of the script which will get ALL resources.
+For use cases on how these optional arguments can be employed, look under the next section, Running DACSspace from the command line.
 
-The script will create a list of evaluated resources in a csv file (default is `dacs_singlelevel_report.csv`).
+### Running DACSspace from the command line
 
-A sample csv file will look like this:
+In the command line, run `dacsspace`. You also need to pass in the `csv_filepath` argument with the name of your CSV filepath in order to run the script (see [above]((https://github.com/RockefellerArchiveCenter/DACSspace#usage))).
 
-| title | publish | resource | extent | date| language | repository | creator | scope | restrictions
-|---|---|---|---|---|---|---|---|---|---|
-| #resource title | TRUE | #resourceId | 20.8 | inclusive|  eng   | #NameofRepository | FALSE | #scopenote| #accessrestriction
-| #resource title | TRUE | #resourceId | 50.6 | single   |  FALSE | #NameofRepository | #creator | FALSE| FALSE
+You can use the different DACSspace optional arguments to decide what data DACSspace will fetch, what data it will report out on, and what schema it will validate the data against.
 
-If you are using Microsoft Excel to view the csv file, consult the following links to avoid encoding issues: [Excel 2007](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0), [Excel 2013](https://www.itg.ias.edu/node/985).
+#### What data to fetch
+
+If you plan to only evaluate DACS compliance on resources in your ArchivesSpace repository that are published, pass in the argument `--published_only` into the command line. This tells the DACSspace client class to only fetch data from published resources.
+
+#### What data to report on
+
+If you want to limit your CSV file to contain information on resources that do not meet DACS compliance, pass in the argument `--invalid_only` into the command line. This tells the DACSspace reporter class to only write information on invalid results of the validation to your CSV file.
+
+The output to your CSV will include the following field names:
+- uri: The ArchivesSpace object's unique identifier (ex. /repositories/2/resources/1234)
+- valid: A boolean indication of the validation result (True or False)
+- error_count: An integer representation of the number of validation errors (ex. 1)
+- explanation: An explanation of any validation errors (You are missing the following fields ...)
+
+If you are using Microsoft Excel to view the CSV file, consult the following links to avoid encoding issues: [Excel 2007](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0), [Excel 2013](https://www.ias.edu/itg/how-import-csv-file-uses-utf-8-character-encoding).
+
+#### What schema to validate your data against
+
+The default JSON schema that DACSspace will run the data it fetches from your ArchivesSpace repository against is the single_level_required JSON schema. If you want to validate your data against a different schema, you have two options:
+
+1. To run DACSspace against a schema other than single_level_required within the `schemas` directory in dacsspace, use the command line argument `--schema_identifier` and specify the identifier for that schema. The identifier must be entered in as a string.
+2. To run DACSspace against a schema that is external to dacsspace, use the command line argument `schema_filepath` and specify the filepath to this external schema. The filepath must be entered in as a string.
+
+### Using DACSspace in another Python program
+
+Different components of the DACSspace package can be incorporated into other Python programs.
+
+For example, say you had a set of data that has already been exported from ArchivesSpace into another sort of container. You do not need to run the entire DACSspace package, but you do want to validate your data set against a JSON schema. To do this, add this code to your script:
+
+`from dacsspace.validator import Validator
+
+exported_data = [{"title": "Archival object" ... }, { ...}]
+validator = Validator("single_level_required.json", None)
+results = [validator.validate_data(obj) for obj in exported_data]
+print(results)`
 
 ## Contributing
 
