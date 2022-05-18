@@ -87,12 +87,14 @@ Different components of the DACSspace package can be incorporated into other Pyt
 
 For example, say you had a set of data that has already been exported from ArchivesSpace into another sort of container. You do not need to run the entire DACSspace package, but you do want to validate your data set against a JSON schema. To do this, add this code to your script:
 
-`from dacsspace.validator import Validator
+```
+from dacsspace.validator import Validator
 
 exported_data = [{"title": "Archival object" ... }, { ...}]
 validator = Validator("single_level_required.json", None)
 results = [validator.validate_data(obj) for obj in exported_data]
-print(results)`
+print(results)
+```
 
 ## Contributing
 
