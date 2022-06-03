@@ -14,7 +14,7 @@ def main():
     parser.add_argument(
         '--as_config',
         help='Filepath for ArchivesSpace configuration file',
-        typ=str,
+        type=str,
         default='as_config.cfg')
     parser.add_argument(
         '--published_only',
