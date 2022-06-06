@@ -4,7 +4,7 @@ A Python package to evaluate your ArchivesSpace instance for DACS [single-level 
 
 DACSspace utilizes the ArchivesSpace API and a default JSON schema to validate resources. The output is a CSV containing a list of invalid URIs with the following fields: validation status, error count, and explanation.
 
-DACSspace also allows users to specify a schema to validate against other than the default DACS single-level required schema, see [Usage](https://github.com/RockefellerArchiveCenter/DACSspace/edit/readme-edits/README.md#what-schema-to-validate-your-data-against) section for more information.
+DACSspace also allows users to specify a schema to validate against other than the default DACS single-level required schema. Refer to [What Schema to Validate Your Data Against](https://github.com/RockefellerArchiveCenter/DACSspace#what-schema-to-validate-your-data-against) for more information.
 
 ## Requirements
 
