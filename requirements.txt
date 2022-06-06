@@ -20,7 +20,7 @@ idna==3.3
     # via requests
 jarowinkler==1.0.2
     # via rapidfuzz
-jsonschema==4.4.0
+jsonschema==4.6.0
     # via -r requirements.in
 more-itertools==8.12.0
     # via archivessnake
