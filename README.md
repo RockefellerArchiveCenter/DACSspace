@@ -4,7 +4,7 @@ A Python package to evaluate your ArchivesSpace instance for DACS [single-level 
 
 DACSspace utilizes the ArchivesSpace API and a default JSON schema to validate resources. The output is a CSV containing a list of invalid URIs with the following fields: validation status, error count, and explanation.
 
-DACSspace also allows users to specify a schema to validate against other than the default DACS single-level required schema, see [Usage](https://github.com/RockefellerArchiveCenter/DACSspace#usage) section for more information.
+DACSspace also allows users to specify a schema to validate against other than the default DACS single-level required schema. Refer to [What Schema to Validate Your Data Against](https://github.com/RockefellerArchiveCenter/DACSspace#what-schema-to-validate-your-data-against) for more information.
 
 ## Requirements
 
@@ -116,11 +116,7 @@ DACSspace uses the Python PEP8 community style guidelines. To conform to these g
 * flake8 checks for style problems as well as errors and complexity
 * isort sorts imports alphabetically, and automatically separated into sections and by type
 
-After locally installing pre-commit, install the git-hook scripts in the DACSSpace directory:
-
-    ```
-    pre-commit install
-    ```  
+After locally installing pre-commit, install the git-hook scripts in the DACSSpace directory: ```pre-commit install```  
 
 #### Documentation
 
@@ -136,7 +132,7 @@ New code should  have unit tests. Tests are written in unittest style and run us
 
 Initial version: Hillel Arnold and Amy Berish.
 
-Version 2.0: Hillel Arnold, Amy Berish, Bonnie Gordon, Katie Martin, and Darren Young.
+Version 1.0: Hillel Arnold, Amy Berish, Bonnie Gordon, Katie Martin, and Darren Young.
 
 ## License
 
