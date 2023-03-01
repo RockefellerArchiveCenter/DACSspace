@@ -10,7 +10,7 @@ attrs==22.2.0
     # via
     #   archivessnake
     #   jsonschema
-boltons==21.0.0
+boltons==23.0.0
     # via archivessnake
 certifi==2022.12.7
     # via requests
@@ -20,7 +20,7 @@ idna==3.4
     # via requests
 jsonschema==4.17.3
     # via -r requirements.in
-more-itertools==9.0.0
+more-itertools==9.1.0
     # via archivessnake
 pyrsistent==0.19.3
     # via jsonschema
