@@ -7,14 +7,14 @@ repos:
       - --in-place
       - --aggressive
 - repo: https://github.com/pycqa/flake8
-  rev: 3.7.9
+  rev: 6.0.0
   hooks:
   - id: flake8
 - repo: https://github.com/pycqa/isort
-  rev: 5.11.4
+  rev: 5.12.0
   hooks:
   - id: isort
 - repo: https://github.com/jazzband/pip-tools
-  rev: 6.12.1
+  rev: 6.12.2
   hooks:
     - id: pip-compile
