@@ -6,7 +6,7 @@
 #
 archivessnake==0.9.1
     # via -r requirements.in
-attrs==22.2.0
+attrs==23.1.0
     # via
     #   archivessnake
     #   jsonschema
@@ -26,13 +26,13 @@ pyrsistent==0.19.3
     # via jsonschema
 pyyaml==6.0
     # via archivessnake
-rapidfuzz==2.14.0
+rapidfuzz==3.0.0
     # via archivessnake
-requests==2.28.2
+requests==2.29.0
     # via
     #   -r requirements.in
     #   archivessnake
-structlog==22.3.0
+structlog==23.1.0
     # via archivessnake
 urllib3==1.26.15
     # via requests
