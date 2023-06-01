@@ -12,7 +12,7 @@ attrs==23.1.0
     #   jsonschema
 boltons==23.0.0
     # via archivessnake
-certifi==2022.12.7
+certifi==2023.5.7
     # via requests
 charset-normalizer==3.1.0
     # via requests
@@ -28,11 +28,11 @@ pyyaml==6.0
     # via archivessnake
 rapidfuzz==3.0.0
     # via archivessnake
-requests==2.29.0
+requests==2.31.0
     # via
     #   -r requirements.in
     #   archivessnake
 structlog==23.1.0
     # via archivessnake
-urllib3==1.26.15
+urllib3==2.0.2
     # via requests
