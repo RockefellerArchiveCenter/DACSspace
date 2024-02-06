@@ -19,17 +19,17 @@ charset-normalizer==3.3.2
     # via requests
 idna==3.6
     # via requests
-jsonschema==4.20.0
+jsonschema==4.21.1
     # via -r requirements.in
 jsonschema-specifications==2023.12.1
     # via jsonschema
-more-itertools==10.1.0
+more-itertools==10.2.0
     # via archivessnake
 pyyaml==6.0.1
     # via archivessnake
 rapidfuzz==3.6.1
     # via archivessnake
-referencing==0.32.0
+referencing==0.33.0
     # via
     #   jsonschema
     #   jsonschema-specifications
@@ -37,11 +37,11 @@ requests==2.31.0
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==0.16.2
+rpds-py==0.17.1
     # via
     #   jsonschema
     #   referencing
-structlog==23.3.0
+structlog==24.1.0
     # via archivessnake
-urllib3==2.1.0
+urllib3==2.2.0
     # via requests
