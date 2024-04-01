@@ -4,16 +4,16 @@
 #
 #    pip-compile
 #
-archivessnake==0.9.1
+archivessnake==0.10.1
     # via -r requirements.in
 attrs==23.2.0
     # via
     #   archivessnake
     #   jsonschema
     #   referencing
-boltons==23.1.1
+boltons==24.0.0
     # via archivessnake
-certifi==2023.11.17
+certifi==2024.2.2
     # via requests
 charset-normalizer==3.3.2
     # via requests
@@ -27,9 +27,9 @@ more-itertools==10.2.0
     # via archivessnake
 pyyaml==6.0.1
     # via archivessnake
-rapidfuzz==3.6.1
+rapidfuzz==3.7.0
     # via archivessnake
-referencing==0.33.0
+referencing==0.34.0
     # via
     #   jsonschema
     #   jsonschema-specifications
@@ -37,11 +37,11 @@ requests==2.31.0
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==0.17.1
+rpds-py==0.18.0
     # via
     #   jsonschema
     #   referencing
 structlog==24.1.0
     # via archivessnake
-urllib3==2.2.0
+urllib3==2.2.1
     # via requests
