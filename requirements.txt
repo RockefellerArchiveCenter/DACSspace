@@ -17,9 +17,9 @@ certifi==2024.2.2
     # via requests
 charset-normalizer==3.3.2
     # via requests
-idna==3.6
+idna==3.7
     # via requests
-jsonschema==4.21.1
+jsonschema==4.22.0
     # via -r requirements.in
 jsonschema-specifications==2023.12.1
     # via jsonschema
@@ -27,9 +27,9 @@ more-itertools==10.2.0
     # via archivessnake
 pyyaml==6.0.1
     # via archivessnake
-rapidfuzz==3.7.0
+rapidfuzz==3.8.1
     # via archivessnake
-referencing==0.34.0
+referencing==0.35.0
     # via
     #   jsonschema
     #   jsonschema-specifications
