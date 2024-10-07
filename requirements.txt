@@ -17,17 +17,17 @@ certifi==2024.8.30
     # via requests
 charset-normalizer==3.3.2
     # via requests
-idna==3.8
+idna==3.10
     # via requests
 jsonschema==4.23.0
     # via -r requirements.in
 jsonschema-specifications==2023.12.1
     # via jsonschema
-more-itertools==10.4.0
+more-itertools==10.5.0
     # via archivessnake
 pyyaml==6.0.2
     # via archivessnake
-rapidfuzz==3.9.6
+rapidfuzz==3.10.0
     # via archivessnake
 referencing==0.35.1
     # via
@@ -43,5 +43,5 @@ rpds-py==0.20.0
     #   referencing
 structlog==24.4.0
     # via archivessnake
-urllib3==2.2.2
+urllib3==2.2.3
     # via requests
