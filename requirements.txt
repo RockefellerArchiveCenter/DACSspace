@@ -11,7 +11,7 @@ attrs==24.2.0
     #   archivessnake
     #   jsonschema
     #   referencing
-boltons==24.0.0
+boltons==24.1.0
     # via archivessnake
 certifi==2024.8.30
     # via requests
@@ -37,7 +37,7 @@ requests==2.32.3
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==0.20.1
+rpds-py==0.21.0
     # via
     #   jsonschema
     #   referencing
