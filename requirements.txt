@@ -6,7 +6,7 @@
 #
 archivessnake==0.10.1
     # via -r requirements.in
-attrs==25.1.0
+attrs==25.3.0
     # via
     #   archivessnake
     #   jsonschema
@@ -37,13 +37,13 @@ requests==2.32.3
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==0.23.1
+rpds-py==0.24.0
     # via
     #   jsonschema
     #   referencing
-structlog==25.1.0
+structlog==25.2.0
     # via archivessnake
-typing-extensions==4.12.2
+typing-extensions==4.13.0
     # via
     #   referencing
     #   structlog
