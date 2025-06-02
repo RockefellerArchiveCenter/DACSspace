@@ -15,11 +15,11 @@ boltons==25.0.0
     # via archivessnake
 certifi==2025.4.26
     # via requests
-charset-normalizer==3.4.1
+charset-normalizer==3.4.2
     # via requests
 idna==3.10
     # via requests
-jsonschema==4.23.0
+jsonschema==4.24.0
     # via -r requirements.in
 jsonschema-specifications==2025.4.1
     # via jsonschema
@@ -37,7 +37,7 @@ requests==2.32.3
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==0.24.0
+rpds-py==0.25.1
     # via
     #   jsonschema
     #   referencing
