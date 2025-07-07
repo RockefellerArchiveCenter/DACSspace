@@ -13,7 +13,7 @@ attrs==25.3.0
     #   referencing
 boltons==25.0.0
     # via archivessnake
-certifi==2025.4.26
+certifi==2025.6.15
     # via requests
 charset-normalizer==3.4.2
     # via requests
@@ -33,7 +33,7 @@ referencing==0.36.2
     # via
     #   jsonschema
     #   jsonschema-specifications
-requests==2.32.3
+requests==2.32.4
     # via
     #   -r requirements.in
     #   archivessnake
@@ -41,11 +41,11 @@ rpds-py==0.25.1
     # via
     #   jsonschema
     #   referencing
-structlog==25.3.0
+structlog==25.4.0
     # via archivessnake
-typing-extensions==4.13.2
+typing-extensions==4.14.0
     # via
     #   referencing
     #   structlog
-urllib3==2.4.0
+urllib3==2.5.0
     # via requests
