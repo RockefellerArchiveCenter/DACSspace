@@ -38,6 +38,8 @@ rpds-py==0.27.1
 structlog==25.4.0
     # via archivessnake
 typing-extensions==4.15.0
-    # via referencing
+    # via
+    #   referencing
+    #   structlog
 urllib3==2.5.0
     # via requests
