@@ -1,17 +1,17 @@
 archivessnake==0.10.1
     # via -r requirements.in
-attrs==25.3.0
+attrs==25.4.0
     # via
     #   archivessnake
     #   jsonschema
     #   referencing
 boltons==25.0.0
     # via archivessnake
-certifi==2025.8.3
+certifi==2025.10.5
     # via requests
-charset-normalizer==3.4.3
+charset-normalizer==3.4.4
     # via requests
-idna==3.10
+idna==3.11
     # via requests
 jsonschema==4.25.1
     # via -r requirements.in
@@ -21,9 +21,9 @@ more-itertools==10.8.0
     # via archivessnake
 pyyaml==6.0.3
     # via archivessnake
-rapidfuzz==3.14.1
+rapidfuzz==3.14.3
     # via archivessnake
-referencing==0.36.2
+referencing==0.37.0
     # via
     #   jsonschema
     #   jsonschema-specifications
@@ -31,11 +31,11 @@ requests==2.32.5
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==0.27.1
+rpds-py==0.28.0
     # via
     #   jsonschema
     #   referencing
-structlog==25.4.0
+structlog==25.5.0
     # via archivessnake
 typing-extensions==4.15.0
     # via
