@@ -7,7 +7,7 @@ attrs==25.4.0
     #   referencing
 boltons==25.0.0
     # via archivessnake
-certifi==2026.1.4
+certifi==2026.2.25
     # via requests
 charset-normalizer==3.4.4
     # via requests
