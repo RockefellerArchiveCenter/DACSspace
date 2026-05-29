@@ -1,0 +1,56 @@
+name: Automatic Release
+
+on:
+  push:
+    branches: [base]
+  workflow_dispatch:
+    inputs:
+      publish_tag:
+        description: "Existing tag to test publish job"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release-please:
+    uses: RockefellerArchiveCenter/.github/.github/workflows/pythonpublish.yml@base
+
+  publish:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' || github.event.inputs.publish_tag != '' }}
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/project/${{ vars.PACKAGE_NAME }}/
+
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v5.0.0
+        with:
+          ref: ${{ github.event.inputs.publish_tag || needs.release-please.outputs.tag_name }}
+
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.x"
+
+      - run: python3 -m pip install --user build
+
+      - run: python3 -m build
+
+      - name: Attach source tarball to GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.event.inputs.publish_tag || needs.release-please.outputs.tag_name }}"
+          gh release upload "$TAG" dist/*.tar.gz --clobber
+
+      - uses: pypa/gh-action-pypi-publish@v1.13.0
+        with:
+          verbose: true
