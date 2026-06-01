@@ -16,7 +16,8 @@ class Validator:
         """
         self.validator = Draft202012Validator
         if not schema_filepath:
-            schema_filepath = f"schemas/{schema_identifier.removesuffix('.json')}.json"
+            schema_filepath = f"schemas/{
+                schema_identifier.removesuffix('.json')}.json"
         with open(schema_filepath, "r") as json_file:
             self.schema = json.load(json_file)
         self.validator.check_schema(self.schema)
@@ -34,8 +35,11 @@ class Validator:
         if error.validator == "required":
             return error.message
         else:
-            schema_path = f"schema[{']['.join(repr(index) for index in error.schema_path)}]"
-            return f"Failed validating {repr(error.validator)} in {schema_path}: {error.schema}"
+            schema_path = f"schema[{
+                ']['.join(
+                    repr(index) for index in error.schema_path)}]"
+            return f"Failed validating {repr(error.validator)} in {
+                schema_path}: {error.schema}"
 
     def validate_data(self, data):
         """Validates data.
