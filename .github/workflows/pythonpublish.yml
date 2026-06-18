@@ -17,6 +17,7 @@ permissions:
 jobs:
   release-please:
     uses: RockefellerArchiveCenter/.github/.github/workflows/pythonpublish.yml@base
+    secrets: inherit
 
   publish:
     needs: release-please
