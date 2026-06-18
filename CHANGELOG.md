@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.3...dacsspace-v0.1.4) (2026-06-18)
+
+
+### Bug Fixes
+
+* update token ([5cc7524](https://github.com/RockefellerArchiveCenter/DACSspace/commit/5cc7524ce2771c63f4376dbb71b5d13590eed60b))
+
 ## [0.1.3](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.2...dacsspace-v0.1.3) (2026-06-18)
 
 
