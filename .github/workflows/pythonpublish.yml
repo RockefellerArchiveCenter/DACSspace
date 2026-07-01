@@ -33,11 +33,11 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
         with:
           ref: ${{ github.event.inputs.publish_tag || needs.release-please.outputs.tag_name }}
 
-      - uses: actions/setup-python@v6.2.0
+      - uses: actions/setup-python@v6.3.0
         with:
           python-version: "3.x"
 
