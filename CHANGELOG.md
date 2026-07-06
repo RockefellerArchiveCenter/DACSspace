@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.5](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.4...dacsspace-v0.1.5) (2026-07-06)
+
+
+### Bug Fixes
+
+* **deps:** Dependency updates ([341540b](https://github.com/RockefellerArchiveCenter/DACSspace/commit/341540b743893e45b28c83e7c72e2dd86261186b))
+* **deps:** Dependency updates ([4072db8](https://github.com/RockefellerArchiveCenter/DACSspace/commit/4072db847a233e4e73a3a207cc3b2cbb496e5aef))
+* **deps:** Scheduled dependency updates ([5c44b32](https://github.com/RockefellerArchiveCenter/DACSspace/commit/5c44b3262152accb3742f41892d712be004df10e))
+* **deps:** Scheduled dependeny updates ([4072db8](https://github.com/RockefellerArchiveCenter/DACSspace/commit/4072db847a233e4e73a3a207cc3b2cbb496e5aef))
+
 ## [0.1.4](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.3...dacsspace-v0.1.4) (2026-06-18)
 
 
