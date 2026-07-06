@@ -5,13 +5,13 @@ attrs==26.1.0
     #   archivessnake
     #   jsonschema
     #   referencing
-boltons==25.0.0
+boltons==26.0.0
     # via archivessnake
-certifi==2026.5.20
+certifi==2026.6.17
     # via requests
 charset-normalizer==3.4.7
     # via requests
-idna==3.17
+idna==3.18
     # via requests
 jsonschema==4.26.0
     # via -r requirements.in
@@ -31,11 +31,11 @@ requests==2.34.2
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==2026.5.1
+rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
-structlog==25.5.0
+structlog==26.1.0
     # via archivessnake
 typing-extensions==4.15.0
     # via referencing
