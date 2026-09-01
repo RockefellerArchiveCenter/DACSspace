@@ -9,9 +9,9 @@ boltons==26.1.0
     # via archivessnake
 certifi==2026.7.22
     # via requests
-charset-normalizer==3.4.9
+charset-normalizer==3.5.1
     # via requests
-idna==3.18
+idna==3.19
     # via requests
 jsonschema==4.26.0
     # via -r requirements.in
@@ -21,7 +21,7 @@ more-itertools==11.1.0
     # via archivessnake
 pyyaml==6.0.3
     # via archivessnake
-rapidfuzz==3.14.5
+rapidfuzz==3.14.6
     # via archivessnake
 referencing==0.37.0
     # via
