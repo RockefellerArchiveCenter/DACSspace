@@ -1,4 +1,4 @@
 __title__ = 'DACSspace'
-__version__ = '0.1.6'
+__version__ = '0.1.7'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2022 Rockefeller Archive Center'
