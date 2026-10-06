@@ -11,7 +11,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Rockefeller Archive Center",
     author_email="archive@rockarch.org",
-    version="0.1.7",
+    version="0.1.8",
     license='MIT',
     packages=find_packages(),
     entry_points={
