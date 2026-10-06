@@ -5,13 +5,13 @@ attrs==26.1.0
     #   archivessnake
     #   jsonschema
     #   referencing
-boltons==26.1.0
+boltons==26.2.0
     # via archivessnake
 certifi==2026.7.22
     # via requests
-charset-normalizer==3.5.1
+charset-normalizer==3.5.2
     # via requests
-idna==3.19
+idna==3.20
     # via requests
 jsonschema==4.26.0
     # via -r requirements.in
@@ -39,5 +39,5 @@ structlog==26.1.0
     # via archivessnake
 typing-extensions==4.16.0
     # via referencing
-urllib3==2.7.0
+urllib3==2.8.0
     # via requests
