@@ -7,7 +7,7 @@ attrs==26.1.0
     #   referencing
 boltons==26.2.0
     # via archivessnake
-certifi==2026.7.22
+certifi==2026.10.19
     # via requests
 charset-normalizer==3.5.2
     # via requests
@@ -17,7 +17,7 @@ jsonschema==4.26.0
     # via -r requirements.in
 jsonschema-specifications==2025.9.1
     # via jsonschema
-more-itertools==11.1.0
+more-itertools==11.2.1
     # via archivessnake
 pyyaml==6.0.3
     # via archivessnake
@@ -31,7 +31,7 @@ requests==2.34.2
     # via
     #   -r requirements.in
     #   archivessnake
-rpds-py==2026.6.3
+rpds-py==2026.9.1
     # via
     #   jsonschema
     #   referencing
