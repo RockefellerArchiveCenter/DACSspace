@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.10](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.9...dacsspace-v0.1.10) (2026-10-21)
+
+
+### Bug Fixes
+
+* publish workflow ([d99c3b5](https://github.com/RockefellerArchiveCenter/DACSspace/commit/d99c3b562d91058bc46b97cc7d2581d9c36b9590))
+* publish workflow ([d99c3b5](https://github.com/RockefellerArchiveCenter/DACSspace/commit/d99c3b562d91058bc46b97cc7d2581d9c36b9590))
+* publish workflow ([76f172d](https://github.com/RockefellerArchiveCenter/DACSspace/commit/76f172de22783d1286505351b02e88561c0ca260))
+* publish workflow ([76f172d](https://github.com/RockefellerArchiveCenter/DACSspace/commit/76f172de22783d1286505351b02e88561c0ca260))
+* publish workflow ([1caf6c8](https://github.com/RockefellerArchiveCenter/DACSspace/commit/1caf6c8f2e1cee9f11bd0f6ae4f5fcb1cfcd4b06))
+
 ## [0.1.9](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.8...dacsspace-v0.1.9) (2026-10-21)
 
 
