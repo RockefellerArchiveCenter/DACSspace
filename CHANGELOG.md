@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.9](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.8...dacsspace-v0.1.9) (2026-10-21)
+
+
+### Bug Fixes
+
+* pip and deps ([df9a2d4](https://github.com/RockefellerArchiveCenter/DACSspace/commit/df9a2d42a7faba7be424fe1ec606cd73aecccde8))
+* pip and deps ([df9a2d4](https://github.com/RockefellerArchiveCenter/DACSspace/commit/df9a2d42a7faba7be424fe1ec606cd73aecccde8))
+* pip and deps ([847b438](https://github.com/RockefellerArchiveCenter/DACSspace/commit/847b43824fed3cd80cb51ab8fa6c2d74e2e96bb5))
+* pip and deps ([847b438](https://github.com/RockefellerArchiveCenter/DACSspace/commit/847b43824fed3cd80cb51ab8fa6c2d74e2e96bb5))
+* pip and deps ([15a6f0f](https://github.com/RockefellerArchiveCenter/DACSspace/commit/15a6f0fac8b0ab5184c4f369629c482dd218dd1d))
+
 ## [0.1.8](https://github.com/RockefellerArchiveCenter/DACSspace/compare/dacsspace-v0.1.7...dacsspace-v0.1.8) (2026-10-06)
 
 
