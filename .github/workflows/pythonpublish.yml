@@ -37,7 +37,7 @@ jobs:
         with:
           ref: ${{ github.event.inputs.publish_tag || needs.release-please.outputs.tag_name }}
 
-      - uses: actions/setup-python@v7.0.0
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: "3.x"
 
@@ -55,6 +55,6 @@ jobs:
           TAG="${{ github.event.inputs.publish_tag || needs.release-please.outputs.tag_name }}"
           gh release upload "$TAG" dist/*.tar.gz --clobber
 
-      - uses: pypa/gh-action-pypi-publish@v1.14.2
+      - uses: pypa/gh-action-pypi-publish@v1.14.3
         with:
           verbose: true
